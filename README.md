@@ -86,10 +86,10 @@
 
 ## Stretch Goals
 * Additional APIs
- * Sytran API - https://platform.systran.net/index
- * Theaurus API - http://thesaurus.altervista.org/
- * Food 2 Fork - https://www.food2fork.com/about/api
- * Google Trends - https://www.npmjs.com/package/google-trends-api#api-methods
+  * Sytran API - https://platform.systran.net/index
+  * Theaurus API - http://thesaurus.altervista.org/
+  * Food 2 Fork - https://www.food2fork.com/about/api
+  * Google Trends - https://www.npmjs.com/package/google-trends-api#api-methods
 * Personalize the site for each user (ask for a name and store in DB or LocalStorage)
 * Single paging the data - showing only what user requests to see
 
