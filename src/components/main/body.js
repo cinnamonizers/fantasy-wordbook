@@ -6,7 +6,7 @@ import Definitions from "./definitions";
 import Quotes from "./quotes.js";
 
 export default class Body extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       BACKEND_URL: "https://fantasy-wordbook-backend.herokuapp.com",
@@ -33,7 +33,7 @@ export default class Body extends React.Component {
   quoteSet = async e => {
     e.preventDefault();
     console.log('dropdown value:', e.target.value);
-    this.setState({dropDownValue: e.target.value});
+    this.setState({ dropDownValue: e.target.value });
 
     const theOne = await superagent
       .get(`${this.state.BACKEND_URL}/quotes`)
@@ -47,21 +47,21 @@ export default class Body extends React.Component {
   };
 
   quoteDisplay = objectList => {
-    if(objectList.length !==0){
+    if (objectList.length !== 0) {
       let ranNum = this.randomInclusiveNumGen(0, objectList.length);
-        if(objectList[ranNum].movie_name === this.state.dropDownValue){
-          return Quotes(objectList[ranNum].quote, this.quoteClicker);
-        }
+      if (objectList[ranNum].movie_name === this.state.dropDownValue) {
+        return Quotes(objectList[ranNum].quote, this.quoteClicker);
+      }
     }
   }
 
   viewSelector = e => {
     e.preventDefault();
-    this.setState({view: "selector"});
+    this.setState({ view: "selector" });
   }
 
   quoteGrabber = e => {
-    this.setState({currentQuote: e.currentTarget});
+    this.setState({ currentQuote: e.currentTarget });
   }
 
   quoteForWordGrabbed = e => {
@@ -75,7 +75,7 @@ export default class Body extends React.Component {
   landingPage = view => {
     if (view === "landing") {
       return (
-        <select onChange={this.viewSelector}>
+        <select className="movieDropdown" onChange={this.viewSelector}>
           <option>Choose a Universe to Explore</option>
           {DropDown(this.state.worldName)}
         </select>
@@ -83,7 +83,7 @@ export default class Body extends React.Component {
     } else if (view === "selector") {
       return (
         <React.Fragment>
-          <select onChange={this.quoteSet}>
+          <select className="movieDropdown" onChange={this.quoteSet}>
             <option>Choose a movie to get quotes from</option>
             {DropDown(this.state.movieNames)}
           </select>
