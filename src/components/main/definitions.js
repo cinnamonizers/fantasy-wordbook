@@ -12,7 +12,7 @@ export default function Definitions(wordChosen, currentQuote) {
   }
   return (
     <React.Fragment>
-      <div>
+      <div className="definitionsBox">
         <ul>
           <li>{arr[0].innerText}</li>
           <li>{wordChosen}</li>
