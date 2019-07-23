@@ -20,12 +20,13 @@
     grid-area: content;
   }
 
-  .definitions-box {
+  .definitionsBox {
     border: 1px solid black;
     margin: 10px;
   }
-  .quotes-box {
-    border: 1px solid black;
+  .quotesBox {
+    border: 3px double rgba(28, 110, 164, 0.13);
+    border-radius: 12px;
     margin: 10px;
   }
   header {
@@ -51,8 +52,6 @@
   }
 
   footer {
-    grid-row-start: 2;
-    grid-row-end: 3;
     background-color: rgb(122, 252, 144);
   }
 }

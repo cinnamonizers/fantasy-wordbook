@@ -3,7 +3,7 @@ import React from "react";
 export default function Definitions(wordChosen) {
   return (
     <React.Fragment>
-      <div>
+      <div className="definitionsBox">
         <ul>
           <li>{wordChosen}</li>
         </ul>
