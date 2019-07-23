@@ -5,8 +5,10 @@ import App from "./components/app.js";
 
 import "./styling/reset.css";
 import "./styling/base.css";
-import "./styling/modules.css";
-import "./styling/layouts.css";
+import "./styling/dropdown-module.css";
+import "./styling/button-module.css";
+import "./styling/tablet-layout.css";
+import "./styling/desktop-layout.css";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
