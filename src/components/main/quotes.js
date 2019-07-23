@@ -1,3 +1,13 @@
 import React from "react";
 
-export default class Quotes extends React.Component { }
+import Spanner from "./spanner.js";
+
+export default function Quotes(quote, clickEvent) {
+  return (
+    <React.Fragment>
+      <div>
+        <p>{Spanner(quote, clickEvent)}</p>
+      </div>
+    </React.Fragment>
+  );
+}
