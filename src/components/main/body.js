@@ -18,7 +18,7 @@ export default class Body extends React.Component {
         "The Return of the King"
       ],
       movieQuote: [],
-      currentQuote: [],
+      currentQuote: null,
       dropDownValue: null,
       wordChosen: null
     }
@@ -47,19 +47,29 @@ export default class Body extends React.Component {
   };
 
   quoteDisplay = objectList => {
-    console.log(this.state.dropDownValue);
     if(objectList.length !==0){
       let ranNum = this.randomInclusiveNumGen(0, objectList.length);
         if(objectList[ranNum].movie_name === this.state.dropDownValue){
-        console.log(ranNum);
-        return Quotes(objectList[ranNum].quote, this.quoteClicker);
-      }
+          return Quotes(objectList[ranNum].quote, this.quoteClicker);
+        }
     }
   }
 
   viewSelector = e => {
     e.preventDefault();
     this.setState({view: "selector"});
+  }
+
+  quoteGrabber = e => {
+    this.setState({currentQuote: e.currentTarget});
+  }
+
+  quoteForWordGrabbed = e => {
+    return (
+      <React.Fragment>
+        {e}
+      </React.Fragment>
+    );
   }
 
   landingPage = view => {
@@ -77,42 +87,42 @@ export default class Body extends React.Component {
             <option>Choose a movie to get quotes from</option>
             {DropDown(this.state.movieNames)}
           </select>
-          <div>
+          <div data-id="1" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="2" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="3" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="4" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="5" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          {this.state.worldChosen !== null && (
-            Definitions(this.state.wordChosen)
+          {this.state.worldChosen !== null && this.state.currentQuote !== null && (
+            Definitions(this.state.wordChosen, this.state.currentQuote)
           )}
         </React.Fragment>
       );
     } else if (view === "quotes") {
       return (
         <React.Fragment>
-          <div>
+          <div data-id="1" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="2" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="3" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="4" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
-          <div>
+          <div data-id="5" onClick={this.quoteGrabber}>
             {this.quoteDisplay(this.state.movieQuote)}
           </div>
         </React.Fragment>
