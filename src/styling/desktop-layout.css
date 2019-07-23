@@ -3,6 +3,8 @@
   * {
     box-sizing: border-box;
     font-family: "Playfair Display", serif;
+    margin: 0;
+    padding: 0;
   }
 
   html {
@@ -11,16 +13,14 @@
   }
   body {
     min-height: 100%;
-    margin: 0;
-    padding: 0;
-    display: inline-grid;
     background-image: url("./wizard-library.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
   }
   .container {
-    grid-template-rows: 1fr auto;
-    grid-gap: 3px;
+    /* display: flex; */
+    max-width: 100%;
+    margin: auto;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -28,15 +28,17 @@
 
   .definitionsBox {
     border: 3px double rgba(28, 110, 164, 0.9);
+
+    overflow: scroll;
   }
   .quotesBox {
     border: 3px double rgba(164, 28, 135, 0.9);
   }
   .quotesBox,
   .definitionsBox {
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    text-align: center;
     border-radius: 12px;
     min-width: 50%;
     max-width: 75%;
@@ -45,11 +47,15 @@
     color: white;
     padding: 10px;
   }
-
-  header {
-    justify-content: center;
-    align-items: center;
+  .categoryStyle {
     text-align: center;
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 2px;
+  }
+  .definitionsBox > ul > li {
+    text-align: left;
+    font-size: 1em;
   }
 
   header > h1 {
@@ -58,10 +64,6 @@
     padding: 10px;
   }
   nav {
-    grid-area: nav;
-  }
-
-  nav ul li {
     display: flex;
     justify-content: space-between;
   }
@@ -71,7 +73,7 @@
     align-items: center;
     text-align: center;
     padding: 15px;
-    position: relative;
+    position: fixed;
     height: 50px;
   }
 

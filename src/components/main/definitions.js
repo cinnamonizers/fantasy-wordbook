@@ -3,32 +3,32 @@ import React from "react";
 export default function Definitions(wordChosen, currentQuote, definition) {
   console.log("word object:", definition);
   const arr = [];
-  arr.push(currentQuote);  
+  arr.push(currentQuote);
 
   return (
     <React.Fragment>
       <div className="definitionsBox">
         <ul>
-          <li>Quote: "{arr[0].innerText}"</li>
+          <li className="categoryStyle">Quote: "{arr[0].innerText}"</li>
           <li>******************</li>
-          <li>Word Chosen: {wordChosen}</li>
-          <li>Definitions:
+          <li className="categoryStyle">Word Chosen: {wordChosen}</li>
+          <li className="categoryStyle">Definitions:
             <ul>
-            {definition[1].map((def,idx) => {
+              {definition[1].map((def, idx) => {
                 return <li key={idx}>{def}</li>
               })}
             </ul>
           </li>
-          <li>Synonyms:
+          <li className="categoryStyle">Synonyms:
               <ul>
-              {definition[2].map((syn,idx) => {
+              {definition[2].map((syn, idx) => {
                 return <li key={idx}>{syn}</li>
               })}
-              </ul>
+            </ul>
           </li>
-          <li>Examples:
+          <li className="categoryStyle">Examples:
             <ul>
-              {definition[0].map((example,idx) => {
+              {definition[0].map((example, idx) => {
                 return <li key={idx}>{example}</li>
               })}
             </ul>
