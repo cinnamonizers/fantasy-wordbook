@@ -6,6 +6,17 @@ import Definitions from "./definitions.js";
 import Quotes from "../functions/quotes.js";
 import MainBuilder from "./main-builder.js";
 
+
+/*
+TODO:
+1. Build About Us Page - this will need to include 
+2. Build the Words Object - will need the requested word, associated quote, definitions, synonyms, and examples
+3. Set local storage (or integration to DB) to store all previously searched words
+4. Get local storage to propagate the words-searched route
+5. Review all files and refactor into further components and functions as needed
+6. Add random number check to ensure multiple quotes are not the same
+*/
+
 export default class Main extends React.Component {
   constructor(props){
     super(props);
@@ -124,16 +135,6 @@ export default class Main extends React.Component {
           {this.state.worldChosen !== null && this.state.currentQuote !== null && (
             Definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)
           )}
-        </React.Fragment>
-      );
-    } else if (view === "quotes") {
-      return (
-        <React.Fragment>
-          <MainBuilder
-            definition={this.definitionSet}
-            display={this.quoteDisplay}
-            quote={this.state.movieQuote}
-          />
         </React.Fragment>
       );
     } else if (view === "words") {

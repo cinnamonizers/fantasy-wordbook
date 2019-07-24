@@ -18,9 +18,6 @@ export default class Nav extends React.Component {
           <Link to="/">
             <button>{this.state.menu[0]}</button>
           </Link>
-          <Link to="/quotes">
-            <button>{this.state.menu[1]}</button>
-          </Link>
           <Link to="/words-searched">
             <button>{this.state.menu[2]}</button>
           </Link>
