@@ -17,7 +17,6 @@ export default class AboutUs extends React.Component {
     return (
       <React.Fragment>
         <div>
-          {/* TODO: update: src={require("<image_route>")} */}
           <img className="team-photo" src={require("../../../assets/cinnamonizers-team.jpg")} alt="Cinnamonizer Team"/>
         </div>
         {AboutUsBuilder(

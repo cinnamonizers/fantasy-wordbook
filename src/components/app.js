@@ -1,44 +1,49 @@
-import React from "react";
-import superagent from "superagent";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import superagent from 'superagent';
+import { BrowserRouter } from 'react-router-dom';
 
-import Header from "./header/header.js";
-import Nav from "./header/nav.js";
-import DropDown from "./main/functions/drop-down.js";
-import Definitions from "./main/components/definitions.js";
-import Quotes from "./main/functions/quotes.js";
-import MainBuilder from "./main/components/main-builder.js";
-import AboutUs from "./main/components/about-us.js";
+import Header from './header/header.js';
+import Nav from './header/nav.js';
+import RandomInclusiveNumGen from './main/functions/ran-num-gen.js';
+import DropDown from './main/functions/drop-down.js';
+import Definitions from './main/components/definitions.js';
+import Quotes from './main/functions/quotes.js';
+import MainBuilder from './main/components/main-builder.js';
+import AboutUs from './main/components/about-us.js';
+import { setLocalStorage } from './main/functions/localstorage.js';
+import wordsPage from './main/components/words.js';
 
 /*
 TODO:
-2. Build the Words Object - will need the requested word, associated quote, definitions, synonyms, and examples
-3. Set local storage (or integration to DB) to store all previously searched words
-4. Get local storage to propagate the words-searched route
-5. Add random number check to ensure multiple quotes are not the same
-6. Review all files and refactor into further components and functions as needed
+2. Get local storage to propagate the words-searched route
+3. Add random number check to ensure multiple quotes are not the same
+4. Change all double quotes to single quotes
+5. Review all files and refactor into further components and functions as needed
 */
+
+let wordObjLocalStorage = JSON.parse(localStorage.getItem('wordObj')) || [];
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      BACKEND_URL: "https://fantasy-wordbook-cinnamonizer.herokuapp.com",
-      view: "landing",
-      worldName: ["The Lord of the Rings"],
+      BACKEND_URL: 'https://fantasy-wordbook-cinnamonizer.herokuapp.com',
+      view: 'landing',
+      worldName: ['The Lord of the Rings'],
       movieNames: null,
       movieQuote: [],
       currentQuote: null,
       dropDownValue: null,
       wordChosen: null,
-      words: []
+      words: [],
+      wordObj: {
+        word: null,
+        quote: null,
+        definitions: null,
+        synonyms: null,
+        examples: null
+      }
     }
-  }
-
-  randomInclusiveNumGen = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   movieTitlesSet = async e => {
@@ -57,7 +62,7 @@ export default class App extends React.Component {
       movieArr[1] = temp;
       this.setState({ movieNames: movieArr });
     }
-    this.setState({ view: "selector" });
+    this.setState({ view: 'selector' });
   }
 
   quoteSet = async e => {
@@ -86,7 +91,7 @@ export default class App extends React.Component {
     let wordChosen = e.target.textContent;
     const regex = /\W+/;
 
-    wordChosen = wordChosen.toLowerCase().replace(regex, "");
+    wordChosen = wordChosen.toLowerCase().replace(regex, '');
 
     if (wordChosen !== this.state.wordChosen) {
       theWord = await superagent
@@ -95,16 +100,24 @@ export default class App extends React.Component {
       this.setState({
         wordChosen: wordChosen,
         currentQuote: target,
-        words: theWord.body
+        words: theWord.body,
+        wordObj: {
+          word: wordChosen,
+          quote: target.innerText,
+          definitions: theWord.body[1],
+          synonyms: theWord.body[2],
+          examples: theWord.body[0]
+        }
       });
+      wordObjLocalStorage.push(this.state.wordObj);
+      setLocalStorage("wordObj", wordObjLocalStorage);
     }
   }
 
   quoteDisplay = objectList => {
     if (objectList.length !== 0) {
-      let ranNum = this.randomInclusiveNumGen(0, objectList.length-1);
+      let ranNum = RandomInclusiveNumGen(0, objectList.length-1);
       let ranQuote = objectList[ranNum].movie_name;
-      console.log(ranQuote);
       if (ranQuote !== undefined) {
         let movie = objectList[ranNum].movie_name;
         let dropValue = this.state.dropDownValue;
@@ -117,60 +130,87 @@ export default class App extends React.Component {
 
   homeView = e => {
     e.preventDefault();
-    this.setState({view: "landing"});
+    this.setState({view: 'landing'});
   }
 
   wordView = e => {
     e.preventDefault();
-    this.setState({view: "words"});
+    this.setState({view: 'words'});
   }
   aboutView = e => {
     e.preventDefault();
-    this.setState({view: "about-us"});
+    this.setState({view: 'about-us'});
   }
 
   landingPage = view => {
-    if (view === "landing") {
-      return (
-        <select className="movieDropdown" onChange={this.movieTitlesSet}>
-          <option>Choose a Universe to Explore</option>
-          {DropDown(this.state.worldName)}
-        </select>
-      );
-    } else if (view === "selector") {
+    if (view === 'landing') {
       return (
         <React.Fragment>
-          <select className="movieDropdown" onChange={this.quoteSet}>
-            <option>Choose a movie to get quotes from</option>
-            {DropDown(this.state.movieNames)}
-          </select>
-          <MainBuilder
-            definition={this.definitionSet}
-            display={this.quoteDisplay}
-            quote={this.state.movieQuote}
-          />
-          {this.state.worldChosen !== null && this.state.currentQuote !== null && (
-            Definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)
-          )}
+          <header>
+            <Header />
+            {Nav(this.homeView, this.wordView, this.aboutView)}
+            <select className='movieDropdown' onChange={this.movieTitlesSet}>
+            <option default="selected">Choose a Universe to Explore</option>
+              {DropDown(this.state.worldName)}
+            </select>
+          </header>
         </React.Fragment>
       );
-    } else if (view === "words") {
-      return <React.Fragment>{Definitions()}</React.Fragment>;
-    } else if (view === "about-us") {
-      return <React.Fragment><AboutUs /></React.Fragment>;
+    } else if (view === 'selector') {
+      return (
+        <React.Fragment>
+          <header>
+            <Header />
+            {Nav(this.homeView, this.wordView, this.aboutView)}
+            <select className='movieDropdown' onChange={this.quoteSet}>
+              <option default="selected">Choose a movie to get quotes from</option>
+              {DropDown(this.state.movieNames)}
+            </select>
+          </header>
+          <main>
+            <MainBuilder
+              definition={this.definitionSet}
+              display={this.quoteDisplay}
+              quote={this.state.movieQuote}
+            />
+            {this.state.worldChosen !== null && this.state.currentQuote !== null && (
+              Definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)
+            )}
+          </main>
+        </React.Fragment>
+      );
+    } else if (view === 'words') {
+      return (
+        <React.Fragment>
+          <header>
+            <Header />
+            {Nav(this.homeView, this.wordView, this.aboutView)}
+          </header>
+          <main className='container'>
+            <h1>Welcome to the words!</h1>
+            {wordsPage()};
+          </main>
+        </React.Fragment>
+      )
+    } else if (view === 'about-us') {
+      return (
+      <React.Fragment>
+        <header>
+          <Header />
+          {Nav(this.homeView, this.wordView, this.aboutView)}
+        </header>
+        <main className='container'>
+          <AboutUs />
+        </main>
+      </React.Fragment>
+      );
     }
   };
 
   render() {
     return (
       <BrowserRouter>
-        <header>
-          <Header />
-          {Nav(this.homeView, this.wordView, this.aboutView)}
-        </header>
-        <main className="container">
-          {this.landingPage(this.state.view)}
-        </main>
+        {this.landingPage(this.state.view)}
       </BrowserRouter >
     );
   }
