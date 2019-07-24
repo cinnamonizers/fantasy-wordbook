@@ -1,20 +1,32 @@
-import React from "react";
-import ListBuilder from "../functions/definitions-builder";
+import React from 'react';
+import ListBuilder from '../functions/definitions-builder.js';
+import wordObjSlicer from '../functions/word-obj-slicer.js';
 
 export default function Definitions(wordChosen, currentQuote, definition) {
-  const arr = [];
-  arr.push(currentQuote);
+  const quote = [];
+  let def = [];
+  let syn = [];
+  let exmp = [];
+
+  quote.push(currentQuote);
+  def.push(definition[1]);
+  syn.push(definition[2]);
+  exmp.push(definition[0]);
+
+  def = wordObjSlicer(def[0]);
+  syn = wordObjSlicer(syn[0]);
+  exmp = wordObjSlicer(exmp[0]);
 
   return (
     <React.Fragment>
-      <div className="definitionsBox">
+      <div className='definitionsBox'>
         <ul>
-          <li>Quote: "{arr[0].innerText}"</li>
+          <li>Quote: "{quote[0].innerText}"</li>
           <li>******************</li>
           <li>Word Chosen: {wordChosen}</li>
-          {ListBuilder("Definitions:", definition[1])}
-          {ListBuilder("Synonyms:", definition[2])}
-          {ListBuilder("Examples:", definition[0])}
+          {ListBuilder('Definitions:', def)}
+          {ListBuilder('Synonyms:', syn)}
+          {ListBuilder('Examples:', exmp)}
         </ul>
       </div>
     </React.Fragment>
