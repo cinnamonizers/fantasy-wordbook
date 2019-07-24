@@ -28,6 +28,8 @@
 
 #### Manish KC
 
+An army vet and aspiring PNW, I call Washington my home. I completed my Masters in Computer Science from University of Washington and currently pursuing my career as an SDE at Amazon. If I am not doing anything, I get found either lost on the woods or watching some fantasy sci-fi on netflix. 
+
 #### Renee Messick
 
 Though born and raised in the Bay Area, I've found my home in Seattle. I'm a software developer in training, interested in creating a user-centric approach to design and development. When not coding I'm spending time with my tiny monster dog and binge watching tv shows.
