@@ -35,6 +35,9 @@ Though born and raised in the Bay Area, I've found my home in Seattle. I'm a web
 I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theory and Composition from Carnegie Mellon Unversity, an Army Veteran, a Computer Science undergrad at Southern New Hampshire University, and now a software developer. I am interested in creating customer centric applications which help change someone's life for the better. When not working, I spend my time with my family and continuing to learn to concepts and technologies.
 
 ## Credits and Collaborations
+#### Assets
+* LinkedIn Logo: https://brand.linkedin.com/downloads
+* GitHub Logo: https://github.com/logos
 
 ## User Stories
 #### End User
