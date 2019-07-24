@@ -5,7 +5,7 @@ import Spanner from './spanner.js';
 export default function Quotes(quote) {
   return (
     <React.Fragment>
-      <p className='quotesBox'>{Spanner(quote)}</p>
+      <p className="quote-item">{Spanner(quote)}</p>
     </React.Fragment>
   );
 }

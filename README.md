@@ -26,12 +26,18 @@
 
 #### Padmapriya Ganapathi
 
+Originally from India, I have been a Pacific Northwest native for almost 13 years now. I have held suport and project management roles before and currently transitioning into a software developer role. When I am not working, I am usually spending some quality time with my family or volunteering in one of my kid's classes. 
+
 #### Manish KC
 
+An army vet and aspiring PNW, I call Washington my home. I completed my Masters in Computer Science from University of Washington and currently pursuing my career as an SDE at Amazon. If I am not doing anything, I get found either lost on the woods or watching some fantasy sci-fi on netflix. 
+
 #### Renee Messick
-Though born and raised in the Bay Area, I've found my home in Seattle. I'm a web developer in training, interested in creating a user-centric approach to design and development. When not coding I'm spending time with my tiny monster dog and binge watching tv shows.
+
+Though born and raised in the Bay Area, I've found my home in Seattle. I'm a software developer in training, interested in creating a user-centric approach to design and development. When not coding I'm spending time with my tiny monster dog and binge watching tv shows.
 
 #### Nicholas Paro
+
 I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theory and Composition from Carnegie Mellon Unversity, an Army Veteran, a Computer Science undergrad at Southern New Hampshire University, and now a software developer. I am interested in creating customer centric applications which help change someone's life for the better. When not working, I spend my time with my family and continuing to learn to concepts and technologies.
 
 ## Credits and Collaborations
@@ -39,7 +45,14 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 * LinkedIn Logo: https://brand.linkedin.com/downloads
 * GitHub Logo: https://github.com/logos
 
+https://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/
+
+https://css-tricks.com/styling-a-select-like-its-2019/
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
 ## User Stories
+
 #### End User
 
 - As a user, I want an easy to understand site which I can easily navigate and want to return to after the first use.
@@ -109,31 +122,33 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 - Single paging the data - showing only what user requests to see
 
 ## Components and Functions List
+
 #### Front End
 
 #### Back End
-
 
 ## Change Log
+
 ### Day 1
+
 #### Front End
 
 #### Back End
-
 
 ### Day 2
+
 #### Front End
 
 #### Back End
-
 
 ### Day 3
+
 #### Front End
 
 #### Back End
 
-
 ### Day 4
+
 #### Front End
 
 #### Back End

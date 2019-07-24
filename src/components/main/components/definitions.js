@@ -20,10 +20,10 @@ export default function Definitions(wordChosen, currentQuote, definition) {
   return (
     <React.Fragment>
       <div className='definitionsBox'>
-        <ul>
-          <li>Quote: "{quote[0].innerText}"</li>
+        <ul className='categoryStyle'>
+          <li className='defSynExStyle'>Quote: "{quote[0].innerText}"</li>
           <li>******************</li>
-          <li>Word Chosen: {wordChosen}</li>
+          <li className='defSynExStyle'>Word Chosen: {wordChosen}</li>
           {ListBuilder('Definitions:', def)}
           {ListBuilder('Synonyms:', syn)}
           {ListBuilder('Examples:', exmp)}
