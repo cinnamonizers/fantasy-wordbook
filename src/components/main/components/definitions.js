@@ -7,11 +7,11 @@ export default function Definitions(wordChosen, currentQuote, definition) {
 
   return (
     <React.Fragment>
-      <div className="definitionsBox">
-        <ul>
-          <li>Quote: "{arr[0].innerText}"</li>
+      <div className="definitionsBox" >
+        <ul className="categoryStyle">
+          <li className="defSynExStyle">Quote: "{arr[0].innerText}"</li>
           <li>******************</li>
-          <li>Word Chosen: {wordChosen}</li>
+          <li className="defSynExStyle">Word Chosen: {wordChosen}</li>
           {ListBuilder("Definitions:", definition[1])}
           {ListBuilder("Synonyms:", definition[2])}
           {ListBuilder("Examples:", definition[0])}

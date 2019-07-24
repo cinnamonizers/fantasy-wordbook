@@ -116,18 +116,22 @@ export default class Main extends React.Component {
   landingPage = view => {
     if (view === "landing") {
       return (
-        <select className="movieDropdown" onChange={this.movieTitlesSet}>
-          <option>Choose a Universe to Explore</option>
-          {DropDown(this.state.worldName)}
-        </select>
+        <div className="dropdownSizing">
+          <select className="movieDropdown" onChange={this.movieTitlesSet}>
+            <option>Choose a Universe to Explore</option>
+            {DropDown(this.state.worldName)}
+          </select>
+        </div>
       );
     } else if (view === "selector") {
       return (
         <React.Fragment>
-          <select className="movieDropdown" onChange={this.quoteSet}>
-            <option>Choose a movie to get quotes from</option>
-            {DropDown(this.state.movieNames)}
-          </select>
+          <div className="dropdownSizing">
+            <select className="movieDropdown" onChange={this.quoteSet}>
+              <option>Choose a movie to get quotes from</option>
+              {DropDown(this.state.movieNames)}
+            </select>
+          </div>
           <MainBuilder
             definition={this.definitionSet}
             display={this.quoteDisplay}

@@ -17,7 +17,7 @@ export default class App extends React.Component {
         <header >
           <Header />
         </header>
-        <main className="container">
+        <main  >
           <Main />
         </main>
       </BrowserRouter >
