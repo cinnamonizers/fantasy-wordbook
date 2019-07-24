@@ -75,3 +75,14 @@
     font-size: 1.5em;
   }
 }
+
+.team-photo{
+  width: 40%;
+}
+
+.about-us-img{
+  width: 35px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
