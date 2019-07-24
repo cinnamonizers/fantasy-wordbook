@@ -1,4 +1,4 @@
-@media only screen and (min-width: 601px) and (max-width: 960px) {
+@media only screen and (min-width: 601px) and (max-width: 900px) {
   * {
     box-sizing: border-box;
     font-family: "Playfair Display", serif;
@@ -11,38 +11,38 @@
     height: 100%;
   }
   body {
+    display: flex;
+    margin: 0;
+    padding: 0;
     min-height: 100%;
-    background-image: url("./wizard-library.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  .container {
-    /* display: flex; */
-    max-width: 100%;
-    margin: auto;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-image: url("./wizard-library.jpeg");
+    background-size: cover;
+    background-repeat: repeat-y;
   }
 
   .definitionsBox {
     border: 3px double rgba(28, 110, 164, 0.9);
-
+    clear: both;
     overflow: scroll;
   }
   .quotesBox {
-    border: 3px double rgba(164, 28, 135, 0.9);
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    border: 3px double rgba(42, 28, 164, 0.9);
+    min-width: 100px;
+    /* overflow: hidden; */
   }
   .quotesBox,
   .definitionsBox {
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     border-radius: 12px;
-    min-width: 50%;
-    max-width: 75%;
+    float: left;
     margin: 5px 10px auto 10px;
-    background-color: rgba(27, 3, 22, 0.2);
+    background-color: rgba(27, 3, 22, 0.6);
     color: white;
     padding: 10px;
   }
@@ -58,7 +58,7 @@
   }
 
   header > h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     color: white;
     padding: 10px;
   }
