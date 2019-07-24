@@ -89,7 +89,9 @@ export default class Main extends React.Component {
   quoteDisplay = objectList => {
     if(objectList.length !==0){
       let ranNum = this.randomInclusiveNumGen(0, objectList.length);
-      if(objectList[ranNum].movie_name !== undefined){
+      let ranQuote = objectList[ranNum].movie_name;
+      console.log(ranQuote);
+      if(ranQuote !== undefined){
         let movie = objectList[ranNum].movie_name;
         let dropValue = this.state.dropDownValue;
         if(movie === dropValue){
