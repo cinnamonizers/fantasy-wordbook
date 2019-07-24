@@ -199,8 +199,13 @@ export default class App extends React.Component {
           <Header />
           {Nav(this.homeView, this.wordView, this.aboutView)}
         </header>
+<<<<<<< HEAD
+        <main  >
+          <Main />
+=======
         <main className='container'>
           <AboutUs />
+>>>>>>> fc73605f88050cd3c0ebb7f949c840791a074896
         </main>
       </React.Fragment>
       );
