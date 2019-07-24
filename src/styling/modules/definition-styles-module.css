@@ -1,0 +1,12 @@
+.categoryStyle {
+  color: rgb(226, 225, 223);
+  text-align: justify;
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 2px;
+}
+.defSynExStyle {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}

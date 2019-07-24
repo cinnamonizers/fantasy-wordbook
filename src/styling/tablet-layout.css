@@ -2,8 +2,6 @@
   * {
     box-sizing: border-box;
     font-family: "Playfair Display", serif;
-    margin: 0;
-    padding: 0;
   }
 
   html {
@@ -22,39 +20,36 @@
     background-size: cover;
     background-repeat: repeat-y;
   }
-
   .definitionsBox {
-    border: 3px double rgba(28, 110, 164, 0.9);
-    clear: both;
+    border: 5px double rgb(1, 29, 48);
     overflow: scroll;
+    margin-bottom: 10px;
   }
   .quotesBox {
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-    border: 3px double rgba(42, 28, 164, 0.9);
-    min-width: 100px;
-    /* overflow: hidden; */
+    border: 5px double rgb(36, 0, 29);
+    overflow: hidden;
   }
   .quotesBox,
   .definitionsBox {
-    flex-direction: row;
     border-radius: 12px;
-    float: left;
-    margin: 5px 10px auto 10px;
-    background-color: rgba(27, 3, 22, 0.6);
+    min-height: 100px;
+    min-width: 100px;
+    margin: 10px;
+
+    background-color: rgba(104, 4, 82, 0.2);
     color: white;
     padding: 10px;
   }
-  .categoryStyle {
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bolder;
-    padding: 2px;
-  }
-  .definitionsBox > ul > li {
+
+  .definitionsBox > li {
     text-align: left;
-    font-size: 1em;
+  }
+
+  header {
+    min-width: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   header > h1 {
@@ -80,4 +75,15 @@
     color: white;
     font-size: 1.5em;
   }
+}
+
+.team-photo {
+  width: 40%;
+}
+
+.about-us-img {
+  width: 35px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

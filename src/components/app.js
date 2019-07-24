@@ -114,7 +114,7 @@ export default class App extends React.Component {
 
   quoteDisplay = objectList => {
     if (objectList.length !== 0) {
-      let ranNum = RandomInclusiveNumGen(0, objectList.length-1);
+      let ranNum = RandomInclusiveNumGen(0, objectList.length - 1);
       let ranQuote = objectList[ranNum].movie_name;
       if (ranQuote !== undefined) {
         let movie = objectList[ranNum].movie_name;
@@ -128,16 +128,16 @@ export default class App extends React.Component {
 
   homeView = e => {
     e.preventDefault();
-    this.setState({view: 'landing'});
+    this.setState({ view: 'landing' });
   }
 
   wordView = e => {
     e.preventDefault();
-    this.setState({view: 'words'});
+    this.setState({ view: 'words' });
   }
   aboutView = e => {
     e.preventDefault();
-    this.setState({view: 'about-us'});
+    this.setState({ view: 'about-us' });
   }
 
   landingPage = view => {
@@ -148,7 +148,7 @@ export default class App extends React.Component {
             <Header />
             {Nav(this.homeView, this.wordView, this.aboutView)}
             <select className='movieDropdown' onChange={this.movieTitlesSet}>
-            <option default="selected">Choose a Universe to Explore</option>
+              <option default="selected">Choose a Universe to Explore</option>
               {DropDown(this.state.worldName)}
             </select>
           </header>
@@ -192,20 +192,15 @@ export default class App extends React.Component {
       )
     } else if (view === 'about-us') {
       return (
-      <React.Fragment>
-        <header>
-          <Header />
-          {Nav(this.homeView, this.wordView, this.aboutView)}
-        </header>
-<<<<<<< HEAD
-        <main  >
-          <Main />
-=======
-        <main className='container'>
-          <AboutUs />
->>>>>>> fc73605f88050cd3c0ebb7f949c840791a074896
-        </main>
-      </React.Fragment>
+        <React.Fragment>
+          <header>
+            <Header />
+            {Nav(this.homeView, this.wordView, this.aboutView)}
+          </header>
+          <main className='container'>
+            <AboutUs />
+          </main>
+        </React.Fragment>
       );
     }
   };
