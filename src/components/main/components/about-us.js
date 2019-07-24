@@ -1,11 +1,11 @@
-import React from "react";
-import AboutUsBuilder from "../functions/about-us-builder";
+import React from 'react';
+import AboutUsBuilder from '../functions/about-us-builder';
 
 export default class AboutUs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      names: ["Padmapriya Ganapathi", "Manish KC", "Renee Messick", "Nicholas Paro"],
+      names: ['Padmapriya Ganapathi', 'Manish KC', 'Renee Messick', 'Nicholas Paro'],
       padma: ['https://github.com/gpadmapriya', 'https://www.linkedin.com/in/padma-ganapathi-71470ab/'],
       manish: ['https://github.com/jManij', 'https://www.linkedin.com/in/manish-kc-15a06b127/'],
       renee: ['https://github.com/rnmessick', 'https://www.linkedin.com/in/renee-messick-16068259/'],
@@ -17,7 +17,7 @@ export default class AboutUs extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <img className="team-photo" src={require("../../../assets/cinnamonizers-team.jpg")} alt="Cinnamonizer Team"/>
+          <img className='team-photo' src={require('../../../assets/cinnamonizers-team.jpg')} alt='Cinnamonizer Team'/>
         </div>
         {AboutUsBuilder(
           this.state.names[0], 

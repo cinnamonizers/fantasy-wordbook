@@ -26,7 +26,11 @@
 
 #### Padmapriya Ganapathi
 
+Originally from India, I have been a Pacific Northwest native for almost 13 years now. I have held suport and project management roles before and currently transitioning into a software developer role. When I am not working, I am usually spending some quality time with my family or volunteering in one of my kid's classes. 
+
 #### Manish KC
+
+An army vet and aspiring PNW, I call Washington my home. I completed my Masters in Computer Science from University of Washington and currently pursuing my career as an SDE at Amazon. If I am not doing anything, I get found either lost on the woods or watching some fantasy sci-fi on netflix. 
 
 #### Renee Messick
 

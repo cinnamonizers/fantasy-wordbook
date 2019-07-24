@@ -11,13 +11,11 @@ import Quotes from './main/functions/quotes.js';
 import MainBuilder from './main/components/main-builder.js';
 import AboutUs from './main/components/about-us.js';
 import { setLocalStorage } from './main/functions/localstorage.js';
-import wordsPage from './main/components/words.js';
+import WordsPage from './main/components/words.js';
 
 /*
 TODO:
-2. Get local storage to propagate the words-searched route
 3. Add random number check to ensure multiple quotes are not the same
-4. Change all double quotes to single quotes
 5. Review all files and refactor into further components and functions as needed
 */
 
@@ -167,7 +165,7 @@ export default class App extends React.Component {
               {DropDown(this.state.movieNames)}
             </select>
           </header>
-          <main>
+          <main className='container'>
             <MainBuilder
               definition={this.definitionSet}
               display={this.quoteDisplay}
@@ -188,7 +186,7 @@ export default class App extends React.Component {
           </header>
           <main className='container'>
             <h1>Welcome to the words!</h1>
-            {wordsPage()};
+            <WordsPage />
           </main>
         </React.Fragment>
       )
