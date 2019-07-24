@@ -28,8 +28,6 @@ export default class MainBuilder extends React.Component {
     )
   }
 
-  
-
   render() {
     return (
       <React.Fragment>

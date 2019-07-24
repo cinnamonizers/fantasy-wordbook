@@ -18,8 +18,6 @@
   }
   .container {
     width: 100%;
-    grid-template-rows: 1fr auto;
-    grid-gap: 3px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -45,6 +43,9 @@
     padding: 10px;
   }
 
+  .definitionsBox > li {
+    text-align: left;
+  }
   header {
     justify-content: center;
     align-items: center;

@@ -14,16 +14,16 @@ export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <header className="container">
+        <header >
           <Header />
         </header>
         <main className="container">
           <Main />
         </main>
-        <footer className="container">
+        <footer>
           <Footer />
         </footer>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
 }
