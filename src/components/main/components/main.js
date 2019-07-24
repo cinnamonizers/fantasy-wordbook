@@ -18,7 +18,7 @@ TODO:
 */
 
 export default class Main extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       BACKEND_URL: "https://fantasy-wordbook-cinnamonizer.herokuapp.com",
@@ -44,18 +44,18 @@ export default class Main extends React.Component {
 
     let world = e.target.value;
 
-    if(world === this.state.worldName[0]){
+    if (world === this.state.worldName[0]) {
       const movies = await superagent
         .get(`${this.state.BACKEND_URL}/movies`)
-        .query({data: e.body});
+        .query({ data: e.body });
 
       let movieArr = movies.body.map(movie => movie.movie_name);
       let temp = movieArr[0];
       movieArr[0] = movieArr[1];
       movieArr[1] = temp;
-      this.setState({movieNames: movieArr});
+      this.setState({ movieNames: movieArr });
     }
-    this.setState({view: "selector"});
+    this.setState({ view: "selector" });
   }
 
   quoteSet = async e => {
@@ -64,14 +64,15 @@ export default class Main extends React.Component {
     let movieChosen = e.target.value;
     let dropDownValue = this.state.dropDownValue;
 
-    if(movieChosen !== dropDownValue){
+    if (movieChosen !== dropDownValue) {
       const theOne = await superagent
         .get(`${this.state.BACKEND_URL}/quotes`)
         .query({ data: movieChosen });
 
-      this.setState({ 
-        dropDownValue: movieChosen, 
-        movieQuote: theOne.body });
+      this.setState({
+        dropDownValue: movieChosen,
+        movieQuote: theOne.body
+      });
     }
   };
 
@@ -84,11 +85,11 @@ export default class Main extends React.Component {
     const regex = /\W+/;
 
     wordChosen = wordChosen.toLowerCase().replace(regex, "");
-    
-    if(wordChosen !== this.state.wordChosen){
+
+    if (wordChosen !== this.state.wordChosen) {
       theWord = await superagent
         .get(`${this.state.BACKEND_URL}/words`)
-        .query({data: wordChosen}); 
+        .query({ data: wordChosen });
       this.setState({
         wordChosen: wordChosen,
         currentQuote: target,
@@ -98,14 +99,14 @@ export default class Main extends React.Component {
   }
 
   quoteDisplay = objectList => {
-    if(objectList.length !==0){
+    if (objectList.length !== 0) {
       let ranNum = this.randomInclusiveNumGen(0, objectList.length);
       let ranQuote = objectList[ranNum].movie_name;
       console.log(ranQuote);
-      if(ranQuote !== undefined){
+      if (ranQuote !== undefined) {
         let movie = objectList[ranNum].movie_name;
         let dropValue = this.state.dropDownValue;
-        if(movie === dropValue){
+        if (movie === dropValue) {
           return Quotes(objectList[ranNum].quote);
         }
       }
@@ -115,7 +116,7 @@ export default class Main extends React.Component {
   landingPage = view => {
     if (view === "landing") {
       return (
-        <select onChange={this.movieTitlesSet}>
+        <select className="movieDropdown" onChange={this.movieTitlesSet}>
           <option>Choose a Universe to Explore</option>
           {DropDown(this.state.worldName)}
         </select>
@@ -123,14 +124,14 @@ export default class Main extends React.Component {
     } else if (view === "selector") {
       return (
         <React.Fragment>
-          <select onChange={this.quoteSet}>
+          <select className="movieDropdown" onChange={this.quoteSet}>
             <option>Choose a movie to get quotes from</option>
             {DropDown(this.state.movieNames)}
           </select>
           <MainBuilder
             definition={this.definitionSet}
             display={this.quoteDisplay}
-            quote={this.state.movieQuote} 
+            quote={this.state.movieQuote}
           />
           {this.state.worldChosen !== null && this.state.currentQuote !== null && (
             Definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)

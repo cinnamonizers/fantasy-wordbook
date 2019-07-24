@@ -5,7 +5,7 @@ export default class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: ["Home", "Quotes", "Words Searched"]
+      menu: ["Home", "Words Searched", "About Us"]
     };
   }
 
@@ -14,11 +14,14 @@ export default class Nav extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <nav>
+        <nav >
           <Link to="/">
             <button>{this.state.menu[0]}</button>
           </Link>
           <Link to="/words-searched">
+            <button>{this.state.menu[1]}</button>
+          </Link>
+          <Link to="/about-us">
             <button>{this.state.menu[2]}</button>
           </Link>
         </nav>
