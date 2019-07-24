@@ -30,6 +30,8 @@
 
 #### Renee Messick
 
+Though born and raised in the Bay Area, I've found my home in Seattle. I'm a web developer in training, interested in creating a user-centric approach to design and development. When not coding I'm spending time with my tiny monster dog and binge watching tv shows.
+
 #### Nicholas Paro
 
 ## Credits and Collaborations
