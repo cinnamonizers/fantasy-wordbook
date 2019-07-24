@@ -1,0 +1,83 @@
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  * {
+    box-sizing: border-box;
+    font-family: "Playfair Display", serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("./wizard-library.jpeg");
+    background-size: cover;
+    background-repeat: repeat-y;
+  }
+
+  .definitionsBox {
+    border: 3px double rgba(28, 110, 164, 0.9);
+    clear: both;
+    overflow: scroll;
+  }
+  .quotesBox {
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    border: 3px double rgba(42, 28, 164, 0.9);
+    min-width: 100px;
+    /* overflow: hidden; */
+  }
+  .quotesBox,
+  .definitionsBox {
+    flex-direction: row;
+    border-radius: 12px;
+    float: left;
+    margin: 5px 10px auto 10px;
+    background-color: rgba(27, 3, 22, 0.6);
+    color: white;
+    padding: 10px;
+  }
+  .categoryStyle {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding: 2px;
+  }
+  .definitionsBox > ul > li {
+    text-align: left;
+    font-size: 1em;
+  }
+
+  header > h1 {
+    font-size: 3rem;
+    color: white;
+    padding: 10px;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    height: 50px;
+  }
+
+  footer > a {
+    color: white;
+    font-size: 1.5em;
+  }
+}

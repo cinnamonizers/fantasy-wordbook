@@ -2,28 +2,25 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import Header from "./header/header.js";
-import Main from "./main/main.js";
-import Footer from "./footer/footer.js";
+import Main from "./main/components/main.js";
+
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-  
+
   render() {
     return (
       <BrowserRouter>
-        <header className="container">
+        <header >
           <Header />
         </header>
-        <main className="container">
+        <main  >
           <Main />
         </main>
-        <footer className="container">
-          <Footer />
-        </footer>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
 }

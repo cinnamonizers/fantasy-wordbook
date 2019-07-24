@@ -1,58 +1,77 @@
+/* https://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/ */
 @media (max-width: 600px) {
   * {
     box-sizing: border-box;
+    font-family: "Playfair Display", serif;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
   }
   body {
-    display: grid;
-    background-color: pink;
-    align-items: center;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("./wizard-library.jpeg");
+    background-size: cover;
+    background-repeat: repeat-y;
   }
-  .container {
-    grid-template-areas:
-      "header header header"
-      "footer footer footer";
-    grid-template-rows: 1fr auto;
-    grid-gap: 5px;
+  .definitionsBox {
+    border: 3px double rgba(28, 110, 164, 0.9);
+    overflow: scroll;
+    margin-bottom: 10px;
+  }
+  .quotesBox {
+    border: 3px double rgba(164, 28, 135, 0.9);
+    overflow: hidden;
+  }
+  .quotesBox,
+  .definitionsBox {
+    border-radius: 12px;
+
+    min-width: 100px;
+    margin: 10px;
+
+    background-color: rgba(27, 3, 22, 0.6);
+    color: white;
+    padding: 10px;
   }
 
-  main {
-    grid-area: content;
-  }
-
-  .definitions-box {
-    border: 1px solid black;
-    margin: 10px;
-  }
-  .quotes-box {
-    border: 1px solid black;
-    margin: 10px;
+  .definitionsBox > li {
+    text-align: left;
   }
   header {
-    grid-area: header;
-    background-color: rgb(150, 127, 255);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
-  button {
-    border-radius: 90%;
-    background-color: black;
-    color: rgb(243, 221, 221);
-    padding: 20px;
-    font-size: 1em;
+  header > h1 {
+    font-size: 3rem;
+    color: white;
+    padding: 10px;
   }
-
   nav {
-    grid-area: nav;
-  }
-
-  nav ul {
     display: flex;
     justify-content: space-between;
   }
 
   footer {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    background-color: rgb(122, 252, 144);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    height: 50px;
+  }
+
+  footer > a {
+    color: white;
+    font-size: 1.5em;
   }
 }
