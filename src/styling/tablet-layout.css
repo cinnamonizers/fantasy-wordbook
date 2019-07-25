@@ -1,0 +1,64 @@
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  * {
+    box-sizing: border-box;
+    font-family: "Playfair Display", serif;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("./wizard-library.jpeg");
+    background-size: cover;
+    background-repeat: repeat-y;
+  }
+  .definitionsBox {
+    border: 5px double rgb(1, 29, 48);
+    overflow: scroll;
+    margin-bottom: 10px;
+  }
+  .quotesBox {
+    border: 5px double rgb(36, 0, 29);
+    overflow: hidden;
+  }
+  .quotesBox,
+  .definitionsBox {
+    border-radius: 12px;
+    min-height: 100px;
+    min-width: 100px;
+    margin: 10px;
+
+    background-color: rgba(104, 4, 82, 0.2);
+    color: white;
+    padding: 10px;
+  }
+
+  .definitionsBox > li {
+    text-align: left;
+  }
+
+  header {
+    min-width: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  header > h1 {
+    font-size: 3rem;
+    color: white;
+    padding: 10px;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+}
