@@ -12,34 +12,40 @@ export default class WordsPage extends React.Component {
 
   setter = () => {
     let wordsArr = getLocalStorage('wordObj');
-    return (
-      wordsArr.map((wordStored, idx) => {
-        let def = [];
-        let syn = [];
-        let exmp = [];
-
-        def.push(wordStored.definitions);
-        syn.push(wordStored.synonyms);
-        exmp.push(wordStored.examples);
-
-        def = wordObjSlicer(def[0]);
-        syn = wordObjSlicer(syn[0]);
-        exmp = wordObjSlicer(exmp[0]);
-
-        return (
-          <div className='wordBox'>
-            <div key={idx}>
-              <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
-              <li>******************</li>
-              <li>Quote: "{wordStored.quote}"</li>
-              {listBuilder('Definitions:', def)}
-              {listBuilder('Synonyms:', syn)}
-              {listBuilder('Examples:', exmp)}
+    if(wordsArr === null){
+      return (
+        <h1 className="defSynExStyle">Please select some words and come back later!</h1>
+      )
+    } else {
+      return (
+        wordsArr.map((wordStored, idx) => {
+          let def = [];
+          let syn = [];
+          let exmp = [];
+  
+          def.push(wordStored.definitions);
+          syn.push(wordStored.synonyms);
+          exmp.push(wordStored.examples);
+  
+          def = wordObjSlicer(def[0]);
+          syn = wordObjSlicer(syn[0]);
+          exmp = wordObjSlicer(exmp[0]);
+  
+          return (
+            <div className='wordBox'>
+              <div key={idx}>
+                <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
+                <li>******************</li>
+                <li>Quote: "{wordStored.quote}"</li>
+                {listBuilder('Definitions:', def)}
+                {listBuilder('Synonyms:', syn)}
+                {listBuilder('Examples:', exmp)}
+              </div>
             </div>
-          </div>
-        )
-      })
-    )
+          )
+        })
+      )
+    } 
   }
 
   render() {
