@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("./wizard-library.jpeg");
+    background-image: url("../wizard-library.jpeg");
     background-size: cover;
     background-repeat: repeat-y;
   }
@@ -26,7 +26,7 @@
     width: 1000px;
   }
   .definitionsBox {
-    border: 5px double rgba(0, 2, 3, 0.9);
+    border: 3px double rgba(28, 110, 164, 0.6);
     background-color: rgba(88, 4, 74, 0.1);
     border-radius: 10px;
     height: 300px;
@@ -42,6 +42,8 @@
     /* -webkit-flex-flow: row wrap; */
   }
 
+<<<<<<< HEAD:src/styling/layouts/desktop-layout.css
+=======
   /* Nick did this - double check my work */
   .wordScrollBox {
     border: 5px double rgba(0, 2, 3, 0.9);
@@ -51,6 +53,7 @@
     width: 100%;
   }
 
+>>>>>>> 476be59bb27f13e4d9caf813d3ac8708b595b54e:src/styling/desktop-layout.css
   .quotesBox {
     padding: 0;
     margin: 0;
@@ -91,5 +94,6 @@
   nav {
     display: flex;
     justify-content: space-between;
+    text-align: left;
   }
 }
