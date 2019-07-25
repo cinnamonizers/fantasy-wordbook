@@ -2,7 +2,7 @@
 
 **AUTHORS** Padmapriya Ganapathi, Manish KC, Renee Messick, Nicholas Paro
 
-**VERSION** 1.0.0
+**VERSION** 1.3.0
 
 ## About Fantasy Wordbook
 
