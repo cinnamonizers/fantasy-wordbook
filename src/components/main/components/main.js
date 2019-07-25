@@ -152,7 +152,9 @@ export default class Main extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.landingPage(this.state.view)}
+        <div className="container">
+          {this.landingPage(this.state.view)}
+        </div>
       </React.Fragment>
     );
   }

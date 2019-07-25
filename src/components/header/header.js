@@ -1,6 +1,4 @@
-import React from "react";
-
-import Nav from "./nav.js";
+import React from 'react';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -11,7 +9,6 @@ export default class Header extends React.Component {
     return (
       <React.Fragment>
         <h1>Fantasy Wordbook</h1>
-        <Nav />
       </React.Fragment>
     );
   }
