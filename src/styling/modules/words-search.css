@@ -36,3 +36,8 @@
   height: 600px;
   width: 100%;
 }
+
+.quote-item > span:hover {
+  font-weight: bolder;
+  color: #d304ee;
+}
