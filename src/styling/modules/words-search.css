@@ -38,7 +38,7 @@
 }
 
 /* https://stackoverflow.com/questions/6865714/highlight-an-individual-word-within-a-text-block-on-hover */
-.quote-item > span:hover {
+.hoverGrab > span:hover {
   font-weight: bolder;
   color: #d304ee;
 }
