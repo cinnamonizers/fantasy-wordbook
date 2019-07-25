@@ -42,14 +42,6 @@
     padding: 10px;
   }
 
-  /* Nick did this - double check my work */
-  .wordScrollBox {
-    border: 3px double rgba(164, 28, 135, 0.9);
-    padding-left: 15%;
-    overflow: scroll;
-    height: 600px;
-  }
-
   .definitionsBox > li {
     text-align: left;
   }
