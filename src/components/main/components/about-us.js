@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutUsBuilder from '../functions/about-us-builder';
+import aboutUsBuilder from '../functions/about-us-builder';
 
 export default class AboutUs extends React.Component {
   constructor(props) {
@@ -19,22 +19,22 @@ export default class AboutUs extends React.Component {
         <div>
           <img className='team-photo' src={require('../../../assets/cinnamonizers-team.jpg')} alt='Cinnamonizer Team'/>
         </div>
-        {AboutUsBuilder(
+        {aboutUsBuilder(
           this.state.names[0], 
           this.state.padma[0], 
           this.state.padma[1]
         )}
-        {AboutUsBuilder(
+        {aboutUsBuilder(
           this.state.names[1], 
           this.state.manish[0], 
           this.state.manish[1]
         )}
-        {AboutUsBuilder(
+        {aboutUsBuilder(
           this.state.names[2], 
           this.state.renee[0], 
           this.state.renee[1]
         )}
-        {AboutUsBuilder(
+        {aboutUsBuilder(
           this.state.names[3], 
           this.state.nick[0], 
           this.state.nick[1]

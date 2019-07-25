@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Nav(homeClicker, wordClicker, aboutClicker) {
+export default function nav(homeClicker, wordClicker, aboutClicker) {
   return (
     <React.Fragment>
       <nav>

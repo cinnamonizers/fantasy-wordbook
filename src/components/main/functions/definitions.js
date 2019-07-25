@@ -1,8 +1,8 @@
 import React from 'react';
-import ListBuilder from '../functions/definitions-builder.js';
-import wordObjSlicer from '../functions/word-obj-slicer.js';
+import listBuilder from './definitions-builder.js';
+import wordObjSlicer from './word-obj-slicer.js';
 
-export default function Definitions(wordChosen, currentQuote, definition) {
+export default function definitions(wordChosen, currentQuote, definition) {
   const quote = [];
   let def = [];
   let syn = [];
@@ -24,9 +24,9 @@ export default function Definitions(wordChosen, currentQuote, definition) {
           <li className='defSynExStyle'>Quote: "{quote[0].innerText}"</li>
           <li>******************</li>
           <li className='defSynExStyle'>Word Chosen: {wordChosen}</li>
-          {ListBuilder('Definitions:', def)}
-          {ListBuilder('Synonyms:', syn)}
-          {ListBuilder('Examples:', exmp)}
+          {listBuilder('Definitions:', def)}
+          {listBuilder('Synonyms:', syn)}
+          {listBuilder('Examples:', exmp)}
         </ul>
       </div>
     </React.Fragment>
