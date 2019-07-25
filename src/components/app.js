@@ -233,7 +233,6 @@ export default class App extends React.Component {
           </header>
           <main className='container'>
             <Route path='/words-searched' component={WordsPage} />
-            {/* <WordsPage /> */}
           </main>
         </React.Fragment>
       )
@@ -247,9 +246,8 @@ export default class App extends React.Component {
               aboutV={this.aboutView}
             />
           </header>
-          <main >
+          <main>
             <Route path='/about-us' component={AboutUs} />
-            {/* <AboutUs /> */}
           </main>
         </React.Fragment>
       );
