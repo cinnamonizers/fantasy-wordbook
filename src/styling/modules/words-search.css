@@ -12,8 +12,6 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
   justify-content: space-around;
   overflow: hidden;
   border: 5px double rgba(0, 2, 3, 0.9);
@@ -28,4 +26,19 @@
   font-weight: bold;
   text-align: center;
   overflow-y: scroll;
+}
+
+/* Nick did this - double check my work */
+.wordScrollBox {
+  border: 5px double rgba(0, 2, 3, 0.9);
+  overflow: scroll;
+  padding-left: 10%;
+  height: 600px;
+  width: 100%;
+}
+
+/* https://stackoverflow.com/questions/6865714/highlight-an-individual-word-within-a-text-block-on-hover */
+.hoverGrab > span:hover {
+  font-weight: bolder;
+  color: #d304ee;
 }

@@ -22,27 +22,50 @@ export default class WordsPage extends React.Component {
           let def = [];
           let syn = [];
           let exmp = [];
+          let sansk = wordStored.sanskrit;
+          let translit = wordStored.transliteration;
   
           def.push(wordStored.definitions);
           syn.push(wordStored.synonyms);
           exmp.push(wordStored.examples);
-  
+          
           def = wordObjSlicer(def[0]);
           syn = wordObjSlicer(syn[0]);
           exmp = wordObjSlicer(exmp[0]);
   
-          return (
-            <div className='wordBox'>
-              <div key={idx}>
-                <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
-                <li>******************</li>
-                <li>Quote: "{wordStored.quote}"</li>
-                {listBuilder('Definitions:', def)}
-                {listBuilder('Synonyms:', syn)}
-                {listBuilder('Examples:', exmp)}
-              </div>
-            </div>
-          )
+          if(sansk === undefined){
+            return (
+              <React.Fragment key={idx}>
+                <div className='definitionsBox'>
+                  <ul className='categoryStyle'>
+                    <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
+                    <li>******************</li>
+                    <li className='defSynExStyle'>Quote: "{wordStored.quote}"</li>
+                    {listBuilder('Definitions:', def)}
+                    {listBuilder('Synonyms:', syn)}
+                    {listBuilder('Examples:', exmp)}
+                  </ul>
+                </div>
+              </React.Fragment>
+            );
+          } else {
+            return (
+              <React.Fragment key={idx}>
+                <div className='definitionsBox'>
+                  <ul className='categoryStyle'>
+                    <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
+                    <li>******************</li>
+                    <li className='defSynExStyle'>Quote: "{wordStored.quote}"</li>
+                    <li className='defSynExStyle'>Sanskrit: "{sansk}"</li>
+                    <li className='defSynExStyle'>Transliteration: "{translit}"</li>
+                    {listBuilder('Definitions:', def)}
+                    {listBuilder('Synonyms:', syn)}
+                    {listBuilder('Examples:', exmp)}
+                  </ul>
+                </div>
+              </React.Fragment>
+            );
+          }
         })
       )
     } 
@@ -50,11 +73,9 @@ export default class WordsPage extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <ul>
-          {this.setter()};
-        </ul>
-      </React.Fragment>
+      <div className='wordScrollBox'>        
+          {this.setter()}
+      </div>
     )
   }
 }

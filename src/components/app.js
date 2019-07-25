@@ -1,6 +1,6 @@
 import React from 'react';
 import superagent from 'superagent';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './header/components/header.js';
 import randomInclusiveNumGen from './main/functions/ran-num-gen.js';
@@ -21,7 +21,8 @@ export default class App extends React.Component {
     this.state = {
       BACKEND_URL: 'https://fantasy-wordbook-cinnamonizer.herokuapp.com',
       view: 'landing',
-      worldName: ['The Lord of the Rings'],
+      worldName: ['The Lord of the Rings', 'Bhagavad Gita'],
+      worldChosen: null,
       movieNames: null,
       movieQuote: [],
       currentQuote: null,
@@ -33,7 +34,9 @@ export default class App extends React.Component {
         quote: null,
         definitions: null,
         synonyms: null,
-        examples: null
+        examples: null,
+        sanskrit: null,
+        transliteraion: null
       }
     }
   }
@@ -51,76 +54,147 @@ export default class App extends React.Component {
       movieArr[0] = movieArr[1];
       movieArr[1] = temp;
       movieArr.unshift('Choose a movie to get quotes from');
-      this.setState({ movieNames: movieArr });
+      this.setState({ 
+        movieNames: movieArr,
+        worldChosen: world
+      });
+    } else if (world === this.state.worldName[1]) {
+      const chapters = await superagent
+        .get(`${this.state.BACKEND_URL}/chapters`)
+        .query({ data: e.body });
+      let chapterArr = chapters.body.map(chapter => chapter.name_meaning);
+      chapterArr = chapterArr.map(chapter => chapter.replace(/"/g, ''));
+      chapterArr.unshift('Choose a chapter to get verses from');
+      this.setState({
+        movieNames: chapterArr,
+        worldChosen: world
+      });
     }
     this.setState({ view: 'selector' });
   }
 
   quoteSet = async e => {
     e.preventDefault();
+    let world = this.state.worldChosen;
     let movieChosen = e.target.value;
     let dropDownValue = this.state.dropDownValue;
 
-    if (movieChosen !== dropDownValue) {
-      const theOne = await superagent
-        .get(`${this.state.BACKEND_URL}/quotes`)
-        .query({ data: movieChosen });
-      this.setState({
-        dropDownValue: movieChosen,
-        movieQuote: theOne.body,
-      });
+    if (world === this.state.worldName[0]) {
+      if (movieChosen !== dropDownValue) {
+        const theOne = await superagent
+          .get(`${this.state.BACKEND_URL}/quotes`)
+          .query({ data: movieChosen });
+        this.setState({
+          dropDownValue: movieChosen,
+          movieQuote: theOne.body
+        });
+      }
+    } else if (world === this.state.worldName[1]) {
+      if (movieChosen !== dropDownValue) {
+        const theChapter = await superagent.get(`${this.state.BACKEND_URL}/verses`).query({ data: movieChosen });
+        this.setState({
+          dropDownValue: movieChosen,
+          movieQuote: theChapter.body
+        });
+      }
     }
     this.setState({ view: 'quotes' });
   };
 
   definitionSet = async e => {
     e.preventDefault();
+    let world = this.state.worldChosen;
     let theWord;
     let target = e.currentTarget;
     let wordChosen = e.target.textContent;
     const regex = /\W+/;
 
     wordChosen = wordChosen.toLowerCase().replace(regex, '');
-
+        
     if (wordChosen !== this.state.wordChosen) {
       theWord = await superagent
         .get(`${this.state.BACKEND_URL}/words`)
         .query({ data: wordChosen });
-      this.setState({
-        wordChosen: wordChosen,
-        currentQuote: target,
-        words: theWord.body,
-        wordObj: {
-          word: wordChosen,
-          quote: target.innerText,
-          definitions: theWord.body[1],
-          synonyms: theWord.body[2],
-          examples: theWord.body[0]
+      if (world === this.state.worldName[0]) {
+        if(theWord.body !== null){
+          this.setState({
+            wordChosen: wordChosen,
+            currentQuote: target,
+            words: theWord.body,
+            wordObj: {
+              word: wordChosen,
+              quote: target.innerText,
+              definitions: theWord.body[1],
+              synonyms: theWord.body[2],
+              examples: theWord.body[0]
+            }
+          });
         }
-      });
+      } else if (world === this.state.worldName[1]) {
+        if(theWord.body !== null){
+          let sanskrit = target.querySelector('div p.sansk').innerText;
+          let translit = target.querySelector('div p.translit').innerText;
+          this.setState({
+            wordChosen: wordChosen,
+            currentQuote: target,
+            words: theWord.body,
+            wordObj: {
+              word: wordChosen,
+              quote: target.innerText,
+              definitions: theWord.body[1],
+              synonyms: theWord.body[2],
+              examples: theWord.body[0],
+              sanskrit: sanskrit,
+              transliteration: translit,
+            }
+          });
+        }
+      }
       wordObjLocalStorage.push(this.state.wordObj);
       setLocalStorage('wordObj', wordObjLocalStorage);
     }
   }
 
   quoteDisplay = objectList => {
+    let world = this.state.worldChosen;
     if (objectList.length !== 0) {
-      let ranNum = randomInclusiveNumGen(0, objectList.length - 1);
-      if (randNumArr.includes(ranNum)) {
-        ranNum = randomInclusiveNumGen(0, objectList.length - 1);
-      };
-      randNumArr.push(ranNum);
-      if (randNumArr.length === 5) {
-        randNumArr = [];
-      }
-      let ranQuote = objectList[ranNum].movie_name;
-      if (ranQuote !== undefined) {
-        let movie = objectList[ranNum].movie_name;
-        let dropValue = this.state.dropDownValue;
-        if (movie === dropValue) {
-          return quotes(objectList[ranNum].quote);
+      
+      if(world === this.state.worldName[0]) {
+        let ranNum = randomInclusiveNumGen(0, objectList.length - 1);
+        if (randNumArr.includes(ranNum)) {
+          ranNum = randomInclusiveNumGen(0, objectList.length - 1);
+        };
+        randNumArr.push(ranNum);
+        if (randNumArr.length === 5) {
+          randNumArr = [];
         }
+        let ranQuote = objectList[ranNum].movie_name;
+        if (ranQuote !== undefined) {
+          let movie = objectList[ranNum].movie_name;
+          let dropValue = this.state.dropDownValue;
+          if (movie === dropValue) {
+            return quotes(objectList[ranNum].quote);
+          }
+        }
+      } else if (world === this.state.worldName[1]) {
+        let arr = [];
+        let chosenChapter = this.state.movieNames.indexOf(this.state.dropDownValue);
+        objectList.forEach(chapter => {
+          if(chapter.chapter_number === chosenChapter){
+            arr.push(chapter);
+          }
+        })
+        let ranNum = randomInclusiveNumGen(0, arr.length - 1);
+        if (randNumArr.includes(ranNum)) {
+          ranNum = randomInclusiveNumGen(0, arr.length - 1);
+        };
+        randNumArr.push(ranNum);
+        if (randNumArr.length === 5) {
+          randNumArr = [];
+        }
+        return quotes(arr[ranNum].verse_meaning, arr[ranNum].verse_text, arr[ranNum].verse_transliteration);
       }
+      
     }
   }
 
@@ -138,32 +212,50 @@ export default class App extends React.Component {
     this.setState({ view: 'about-us' });
   }
 
+  headerSet = () => {
+    return (
+      <Header
+        homeV={this.homeView}
+        wordV={this.wordView}
+        aboutV={this.aboutView}
+      />
+    )
+  }
+
+  homeLanding = () => {
+    return (
+      <React.Fragment>
+        <header>
+          {this.headerSet()}
+          <select className='movieDropdown' onChange={this.movieTitlesSet}>
+            <option default='selected'>Choose a Universe to Explore</option>
+            {dropDown(this.state.worldName)}
+          </select>
+        </header>
+      </React.Fragment>
+    )
+  }
+
+  wordsLanding = () => {
+    let world = this.state.worldChosen;
+    console.log(world);
+    return (
+      <WordsPage world={world} />
+    )
+  }
+
   landingPage = view => {
     if (view === 'landing') {
       return (
         <React.Fragment>
-          <header>
-            <Header
-              homeV={this.homeView}
-              wordV={this.wordView}
-              aboutV={this.aboutView}
-            />
-            <select className='movieDropdown' onChange={this.movieTitlesSet}>
-              <option default='selected'>Choose a Universe to Explore</option>
-              {dropDown(this.state.worldName)}
-            </select>
-          </header>
+          <Route exact path='/' component={this.homeLanding} />
         </React.Fragment>
       );
     } else if (view === 'selector') {
       return (
         <React.Fragment>
           <header>
-            <Header
-              homeV={this.homeView}
-              wordV={this.wordView}
-              aboutV={this.aboutView}
-            />
+            {this.headerSet()}
             <select className='movieDropdown' onChange={this.quoteSet}>
               {dropDown(this.state.movieNames)}
             </select>
@@ -174,11 +266,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header
-              homeV={this.homeView}
-              wordV={this.wordView}
-              aboutV={this.aboutView}
-            />
+            {this.headerSet()}
             <select className='movieDropdown' onChange={this.quoteSet}>
               {dropDown(this.state.movieNames)}
             </select>
@@ -199,14 +287,10 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header
-              homeV={this.homeView}
-              wordV={this.wordView}
-              aboutV={this.aboutView}
-            />
+            {this.headerSet()}
           </header>
           <main className='container'>
-            <WordsPage />
+            <Route path='/words-searched' component={WordsPage} />
           </main>
         </React.Fragment>
       )
@@ -214,14 +298,10 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header
-              homeV={this.homeView}
-              wordV={this.wordView}
-              aboutV={this.aboutView}
-            />
+            {this.headerSet()}
           </header>
-          <main >
-            <AboutUs />
+          <main>
+            <Route path='/about-us' component={AboutUs} />
           </main>
         </React.Fragment>
       );

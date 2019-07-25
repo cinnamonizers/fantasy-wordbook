@@ -17,6 +17,7 @@
 - APIS:
   - The Lord of the Rings - https://the-one-api.herokuapp.com/
   - Words API - https://www.wordsapi.com/
+  - Bhagavad Gita - https://bhagavadgita.io/api/
 - Organizational:
   - GitHub - https://github.com/cinnamonizers/fantasy-wordbook
   - Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
@@ -28,11 +29,11 @@
 
 #### Padmapriya Ganapathi
 
-Originally from India, I have been a Pacific Northwest native for almost 13 years now. I have held suport and project management roles before and currently transitioning into a software developer role. When I am not working, I am usually spending some quality time with my family or volunteering in one of my kid's classes. 
+Originally from India, I have been a Pacific Northwest native for almost 13 years now. I have held suport and project management roles before and currently transitioning into a software developer role. When I am not working, I am usually spending some quality time with my family or volunteering in one of my kid's classes.
 
 #### Manish KC
 
-An army vet and aspiring PNW, I call Washington my home. I completed my Masters in Computer Science from University of Washington and currently pursuing my career as an SDE at Amazon. If I am not doing anything, I get found either lost on the woods or watching some fantasy sci-fi on netflix. 
+An army vet and aspiring PNW, I call Washington my home. I completed my Masters in Computer Science from University of Washington and currently pursuing my career as an SDE at Amazon. If I am not doing anything, I get found either lost on the woods or watching some fantasy sci-fi on netflix.
 
 #### Renee Messick
 
@@ -43,9 +44,11 @@ Though born and raised in the Bay Area, I've found my home in Seattle. I'm a sof
 I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theory and Composition from Carnegie Mellon Unversity, an Army Veteran, a Computer Science undergrad at Southern New Hampshire University, and now a software developer. I am interested in creating customer centric applications which help change someone's life for the better. When not working, I spend my time with my family and continuing to learn to concepts and technologies.
 
 ## Credits and Collaborations
+
 #### Assets
-* LinkedIn Logo: https://brand.linkedin.com/downloads
-* GitHub Logo: https://github.com/logos
+
+- LinkedIn Logo: https://brand.linkedin.com/downloads
+- GitHub Logo: https://github.com/logos
 
 https://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/
 
@@ -109,7 +112,6 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - 2 APIs used
 - Functioning and normalized database
 - A styled and clean user interface which allows for user input and data output.
-- Delete or Update a piece of information from the database
 - Have a home page with routing
 - Have an about us page
 
@@ -124,20 +126,31 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Single paging the data - showing only what user requests to see
 
 ## Components and Functions List
+
 ### Components
+
 - Index
 - App
+
 #### Header
+
 - Header
+
 #### Main
+
 - Main
 - Main Builder
 - About Us
 - Words
+
 ### Functions
+
 #### Header
+
 - Nav
+
 #### Main
+
 - About Us Builder
 - Definitions Builder
 - Definitions
@@ -148,16 +161,39 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Spanner
 - Word Object Slicer
 
+### CSS
+
+- Reset
+- Base
+
+#### Layouts
+
+- Desktop Layout
+- Tablet Layout
+
+#### Modules
+
+- Buttons
+- Dropdown Menu
+- Scroll Bars
+- Words Searched
+- Definition Style
+- About Us
+
 ## Change Log
 
 ### Day 1
+
 - Scaffolded the front-end
+- Built out basic css grid structure using SMACCS guidelines
 
 ### Day 2
 
+- Mobile view complete
 
 ### Day 3
 
+- Rebuilt css with flexbox in SMACCS guidelines
+- Fully responsive views available for mobile, tablet, and desktop
 
 ### Day 4
-
