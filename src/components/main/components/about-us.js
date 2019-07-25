@@ -16,9 +16,29 @@ export default class AboutUs extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <img className='team-photo' src={require('../../../assets/cinnamonizers-team.jpg')} alt='Cinnamonizer Team'/>
+        <div >
+          <img className='team-photo' src={require('../../../assets/cinnamonizers-team.jpg')} alt='Cinnamonizer Team' />
         </div>
+<<<<<<< HEAD
+        {AboutUsBuilder(
+          this.state.names[0],
+          this.state.padma[0],
+          this.state.padma[1]
+        )}
+        {AboutUsBuilder(
+          this.state.names[1],
+          this.state.manish[0],
+          this.state.manish[1]
+        )}
+        {AboutUsBuilder(
+          this.state.names[2],
+          this.state.renee[0],
+          this.state.renee[1]
+        )}
+        {AboutUsBuilder(
+          this.state.names[3],
+          this.state.nick[0],
+=======
         {aboutUsBuilder(
           this.state.names[0], 
           this.state.padma[0], 
@@ -37,6 +57,7 @@ export default class AboutUs extends React.Component {
         {aboutUsBuilder(
           this.state.names[3], 
           this.state.nick[0], 
+>>>>>>> cb8818442d897b2cb0b5429078d7634d1260639f
           this.state.nick[1]
         )}
       </React.Fragment>

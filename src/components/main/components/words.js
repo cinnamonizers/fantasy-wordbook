@@ -5,11 +5,11 @@ import wordObjSlicer from '../functions/word-obj-slicer.js';
 import listBuilder from '../functions/definitions-builder.js';
 
 export default class WordsPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {}
   }
-  
+
   setter = () => {
     let wordsArr = getLocalStorage('wordObj');
     return (
@@ -27,6 +27,17 @@ export default class WordsPage extends React.Component {
         exmp = wordObjSlicer(exmp[0]);
 
         return (
+<<<<<<< HEAD
+          <div className='wordBox'>
+            <div key={idx}>
+              <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
+              <li>******************</li>
+              <li>Quote: "{wordStored.quote}"</li>
+              {ListBuilder('Definitions:', def)}
+              {ListBuilder('Synonyms:', syn)}
+              {ListBuilder('Examples:', exmp)}
+            </div>
+=======
           <div className='definitionBox' key={idx}>
             <li>Word Chosen: {wordStored.word}</li>
             <li>******************</li>
@@ -34,10 +45,11 @@ export default class WordsPage extends React.Component {
             {listBuilder('Definitions:', def)}
             {listBuilder('Synonyms:', syn)}
             {listBuilder('Examples:', exmp)}
+>>>>>>> cb8818442d897b2cb0b5429078d7634d1260639f
           </div>
         )
       })
-    ) 
+    )
   }
 
   render() {
