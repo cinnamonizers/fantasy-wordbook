@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("./wizard-library.jpeg");
+    background-image: url("../wizard-library.jpeg");
     background-size: cover;
     background-repeat: repeat-y;
   }
@@ -40,14 +40,6 @@
     display: -webkit-flex;
     display: flex;
     /* -webkit-flex-flow: row wrap; */
-  }
-
-  /* Nick did this - double check my work */
-  .wordScrollBox {
-    border: 5px double rgba(0, 2, 3, 0.9);
-    overflow: scroll;
-    height: 600px;
-    width: 90%;
   }
 
   .quotesBox {
