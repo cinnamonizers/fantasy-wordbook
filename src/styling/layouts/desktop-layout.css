@@ -42,6 +42,18 @@
     /* -webkit-flex-flow: row wrap; */
   }
 
+<<<<<<< HEAD:src/styling/layouts/desktop-layout.css
+=======
+  /* Nick did this - double check my work */
+  .wordScrollBox {
+    border: 5px double rgba(0, 2, 3, 0.9);
+    overflow: scroll;
+    padding-left: 10%;
+    height: 600px;
+    width: 100%;
+  }
+
+>>>>>>> 476be59bb27f13e4d9caf813d3ac8708b595b54e:src/styling/desktop-layout.css
   .quotesBox {
     padding: 0;
     margin: 0;

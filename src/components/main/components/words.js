@@ -32,7 +32,7 @@ export default class WordsPage extends React.Component {
           exmp = wordObjSlicer(exmp[0]);
   
           return (
-            <div className='wordBox'>
+            <div className='wordBox' key={idx}>
               <div key={idx}>
                 <ul>
                   <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
