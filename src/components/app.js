@@ -2,24 +2,18 @@ import React from 'react';
 import superagent from 'superagent';
 import { BrowserRouter } from 'react-router-dom';
 
-import Header from './header/header.js';
-import Nav from './header/nav.js';
-import RandomInclusiveNumGen from './main/functions/ran-num-gen.js';
-import DropDown from './main/functions/drop-down.js';
-import Definitions from './main/components/definitions.js';
-import Quotes from './main/functions/quotes.js';
+import Header from './header/components/header.js';
+import randomInclusiveNumGen from './main/functions/ran-num-gen.js';
+import dropDown from './main/functions/drop-down.js';
+import definitions from './main/functions/definitions.js';
+import quotes from './main/functions/quotes.js';
 import MainBuilder from './main/components/main-builder.js';
 import AboutUs from './main/components/about-us.js';
-import { setLocalStorage } from './main/functions/localstorage.js';
+import { setLocalStorage, getLocalStorage } from './main/functions/localstorage.js';
 import WordsPage from './main/components/words.js';
 
-/*
-TODO:
-3. Add random number check to ensure multiple quotes are not the same
-5. Review all files and refactor into further components and functions as needed
-*/
-
-let wordObjLocalStorage = JSON.parse(localStorage.getItem('wordObj')) || [];
+let wordObjLocalStorage = getLocalStorage('wordObj') || [];
+let randNumArr = [];
 
 export default class App extends React.Component {
   constructor(props) {
@@ -46,18 +40,17 @@ export default class App extends React.Component {
 
   movieTitlesSet = async e => {
     e.preventDefault();
-
     let world = e.target.value;
 
     if (world === this.state.worldName[0]) {
       const movies = await superagent
         .get(`${this.state.BACKEND_URL}/movies`)
         .query({ data: e.body });
-
       let movieArr = movies.body.map(movie => movie.movie_name);
       let temp = movieArr[0];
       movieArr[0] = movieArr[1];
       movieArr[1] = temp;
+      movieArr.unshift('Choose a movie to get quotes from');
       this.setState({ movieNames: movieArr });
     }
     this.setState({ view: 'selector' });
@@ -65,7 +58,6 @@ export default class App extends React.Component {
 
   quoteSet = async e => {
     e.preventDefault();
-
     let movieChosen = e.target.value;
     let dropDownValue = this.state.dropDownValue;
 
@@ -73,17 +65,16 @@ export default class App extends React.Component {
       const theOne = await superagent
         .get(`${this.state.BACKEND_URL}/quotes`)
         .query({ data: movieChosen });
-
       this.setState({
         dropDownValue: movieChosen,
-        movieQuote: theOne.body
+        movieQuote: theOne.body,
       });
     }
+    this.setState({ view: 'quotes' });
   };
 
   definitionSet = async e => {
     e.preventDefault();
-
     let theWord;
     let target = e.currentTarget;
     let wordChosen = e.target.textContent;
@@ -108,19 +99,26 @@ export default class App extends React.Component {
         }
       });
       wordObjLocalStorage.push(this.state.wordObj);
-      setLocalStorage("wordObj", wordObjLocalStorage);
+      setLocalStorage('wordObj', wordObjLocalStorage);
     }
   }
 
   quoteDisplay = objectList => {
     if (objectList.length !== 0) {
-      let ranNum = RandomInclusiveNumGen(0, objectList.length - 1);
+      let ranNum = randomInclusiveNumGen(0, objectList.length - 1);
+      if (randNumArr.includes(ranNum)) {
+        ranNum = randomInclusiveNumGen(0, objectList.length - 1);
+      };
+      randNumArr.push(ranNum);
+      if (randNumArr.length === 5) {
+        randNumArr = [];
+      }
       let ranQuote = objectList[ranNum].movie_name;
       if (ranQuote !== undefined) {
         let movie = objectList[ranNum].movie_name;
         let dropValue = this.state.dropDownValue;
         if (movie === dropValue) {
-          return Quotes(objectList[ranNum].quote);
+          return quotes(objectList[ranNum].quote);
         }
       }
     }
@@ -145,11 +143,14 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header />
-            {Nav(this.homeView, this.wordView, this.aboutView)}
+            <Header
+              homeV={this.homeView}
+              wordV={this.wordView}
+              aboutV={this.aboutView}
+            />
             <select className='movieDropdown' onChange={this.movieTitlesSet}>
-              <option default="selected">Choose a Universe to Explore</option>
-              {DropDown(this.state.worldName)}
+              <option default='selected'>Choose a Universe to Explore</option>
+              {dropDown(this.state.worldName)}
             </select>
           </header>
         </React.Fragment>
@@ -158,11 +159,28 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header />
-            {Nav(this.homeView, this.wordView, this.aboutView)}
+            <Header
+              homeV={this.homeView}
+              wordV={this.wordView}
+              aboutV={this.aboutView}
+            />
             <select className='movieDropdown' onChange={this.quoteSet}>
-              <option default="selected">Choose a movie to get quotes from</option>
-              {DropDown(this.state.movieNames)}
+              {dropDown(this.state.movieNames)}
+            </select>
+          </header>
+        </React.Fragment>
+      );
+    } else if (view === 'quotes') {
+      return (
+        <React.Fragment>
+          <header>
+            <Header
+              homeV={this.homeView}
+              wordV={this.wordView}
+              aboutV={this.aboutView}
+            />
+            <select className='movieDropdown' onChange={this.quoteSet}>
+              {dropDown(this.state.movieNames)}
             </select>
           </header>
           <main className='container'>
@@ -172,7 +190,7 @@ export default class App extends React.Component {
               quote={this.state.movieQuote}
             />
             {this.state.worldChosen !== null && this.state.currentQuote !== null && (
-              Definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)
+              definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)
             )}
           </main>
         </React.Fragment>
@@ -181,11 +199,13 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header />
-            {Nav(this.homeView, this.wordView, this.aboutView)}
+            <Header
+              homeV={this.homeView}
+              wordV={this.wordView}
+              aboutV={this.aboutView}
+            />
           </header>
-          <main >
-            <h1>Welcome to the words!</h1>
+          <main className='container'>
             <WordsPage />
           </main>
         </React.Fragment>
@@ -194,8 +214,11 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header />
-            {Nav(this.homeView, this.wordView, this.aboutView)}
+            <Header
+              homeV={this.homeView}
+              wordV={this.wordView}
+              aboutV={this.aboutView}
+            />
           </header>
           <main >
             <AboutUs />

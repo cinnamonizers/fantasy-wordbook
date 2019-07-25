@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Spanner from './spanner.js';
+import spanner from './spanner.js';
 
-export default function Quotes(quote) {
+export default function quotes(quote) {
   return (
     <React.Fragment>
-      <p className="quote-item">{Spanner(quote)}</p>
+      <p className="quote-item">{spanner(quote)}</p>
     </React.Fragment>
   );
 }
