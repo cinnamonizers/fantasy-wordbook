@@ -1,6 +1,6 @@
 import React from 'react';
 import superagent from 'superagent';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './header/components/header.js';
 import randomInclusiveNumGen from './main/functions/ran-num-gen.js';
@@ -21,7 +21,7 @@ export default class App extends React.Component {
     this.state = {
       BACKEND_URL: 'https://fantasy-wordbook-cinnamonizer.herokuapp.com',
       view: 'landing',
-      worldName: ['The Lord of the Rings'],
+      worldName: ['The Lord of the Rings', 'Bhagavad Gita'],
       movieNames: null,
       movieQuote: [],
       currentQuote: null,
@@ -52,6 +52,13 @@ export default class App extends React.Component {
       movieArr[1] = temp;
       movieArr.unshift('Choose a movie to get quotes from');
       this.setState({ movieNames: movieArr });
+    } else if (world === this.state.worldName[1]) {
+      const chapters = await superagent
+        .get(`${this.state.BACKEND_URL}/chapters`)
+        .query({ data: e.body });
+      let chapterArr = chapters.body.map(chapter => chapter.name_meaning);
+      chapterArr.unshift('Choose a chapter to get verses from');
+      this.setState({ movieNames: chapterArr });
     }
     this.setState({ view: 'selector' });
   }
@@ -61,15 +68,26 @@ export default class App extends React.Component {
     let movieChosen = e.target.value;
     let dropDownValue = this.state.dropDownValue;
 
-    if (movieChosen !== dropDownValue) {
-      const theOne = await superagent
-        .get(`${this.state.BACKEND_URL}/quotes`)
-        .query({ data: movieChosen });
-      this.setState({
-        dropDownValue: movieChosen,
-        movieQuote: theOne.body,
-      });
-    }
+    if (this.state.worldName[0]) {
+      if (movieChosen !== dropDownValue) {
+        const theOne = await superagent
+          .get(`${this.state.BACKEND_URL}/quotes`)
+          .query({ data: movieChosen });
+        this.setState({
+          dropDownValue: movieChosen,
+          movieQuote: theOne.body
+        });
+      }
+    } 
+    // else if (this.state.worldName[1]) {
+    //   if (movieChosen !== dropDownValue) {
+    //     const theChapter = await superagent.get(`${this.state.BACKEND_URL}/verses`).query({ data: movieChosen });
+    //     this.setState({
+    //       dropDownValue: movieChosen,
+    //       movieQuote: theChapter.body
+    //     });
+    //   }
+    // }
     this.setState({ view: 'quotes' });
   };
 
@@ -138,21 +156,29 @@ export default class App extends React.Component {
     this.setState({ view: 'about-us' });
   }
 
+  homeLanding = () => {
+    return (
+      <React.Fragment>
+        <header>
+          <Header
+            homeV={this.homeView}
+            wordV={this.wordView}
+            aboutV={this.aboutView}
+          />
+          <select className='movieDropdown' onChange={this.movieTitlesSet}>
+            <option default='selected'>Choose a Universe to Explore</option>
+            {dropDown(this.state.worldName)}
+          </select>
+        </header>
+      </React.Fragment>
+    )
+  }
+
   landingPage = view => {
     if (view === 'landing') {
       return (
         <React.Fragment>
-          <header>
-            <Header
-              homeV={this.homeView}
-              wordV={this.wordView}
-              aboutV={this.aboutView}
-            />
-            <select className='movieDropdown' onChange={this.movieTitlesSet}>
-              <option default='selected'>Choose a Universe to Explore</option>
-              {dropDown(this.state.worldName)}
-            </select>
-          </header>
+          <Route exact path='/' component={this.homeLanding} />
         </React.Fragment>
       );
     } else if (view === 'selector') {
@@ -206,7 +232,8 @@ export default class App extends React.Component {
             />
           </header>
           <main className='container'>
-            <WordsPage />
+            <Route path='/words-searched' component={WordsPage} />
+            {/* <WordsPage /> */}
           </main>
         </React.Fragment>
       )
@@ -221,7 +248,8 @@ export default class App extends React.Component {
             />
           </header>
           <main >
-            <AboutUs />
+            <Route path='/about-us' component={AboutUs} />
+            {/* <AboutUs /> */}
           </main>
         </React.Fragment>
       );
