@@ -20,7 +20,9 @@
 - Organizational:
   - GitHub - https://github.com/cinnamonizers/fantasy-wordbook
   - Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
-- codesandbox.io
+- IDE
+  - VSCode
+  - codesandbox.io
 
 ## About Us
 
