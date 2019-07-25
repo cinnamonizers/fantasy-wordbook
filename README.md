@@ -189,11 +189,11 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 ### Day 2
 
--Mobile view complete
+- Mobile view complete
 
 ### Day 3
 
--Rebuilt css with flexbox in SMACCS guidelines
--Fully responsive views available for mobile, tablet, and desktop
+- Rebuilt css with flexbox in SMACCS guidelines
+- Fully responsive views available for mobile, tablet, and desktop
 
 ### Day 4
