@@ -18,8 +18,8 @@
   - The Lord of the Rings - https://the-one-api.herokuapp.com/
   - Words API - https://www.wordsapi.com/
 - Organizational:
-- GitHub - https://github.com/cinnamonizers/fantasy-wordbook
-- Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
+  - GitHub - https://github.com/cinnamonizers/fantasy-wordbook
+  - Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
 - codesandbox.io
 
 ## About Us
@@ -123,33 +123,33 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 ## Components and Functions List
 ### Components
-* Index
-* App
+- Index
+- App
 #### Header
-* Header
+- Header
 #### Main
-* Main
-* Main Builder
-* About Us
-* Words
+- Main
+- Main Builder
+- About Us
+- Words
 ### Functions
 #### Header
-* Nav
+- Nav
 #### Main
-* About Us Builder
-* Definitions Builder
-* Definitions
-* Dropdown
-* Local Storage
-* Quotes
-* Random Number Generator
-* Spanner
-* Word Object Slicer
+- About Us Builder
+- Definitions Builder
+- Definitions
+- Dropdown
+- Local Storage
+- Quotes
+- Random Number Generator
+- Spanner
+- Word Object Slicer
 
 ## Change Log
 
 ### Day 1
-* Scaffolded the front-end
+- Scaffolded the front-end
 
 ### Day 2
 
