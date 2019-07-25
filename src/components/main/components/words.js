@@ -12,7 +12,6 @@ export default class WordsPage extends React.Component {
 
   setter = () => {
     let wordsArr = getLocalStorage('wordObj');
-    console.log(wordsArr);
     if(wordsArr === null){
       return (
         <h1 className="defSynExStyle">Please select some words and come back later!</h1>
@@ -23,7 +22,7 @@ export default class WordsPage extends React.Component {
           let def = [];
           let syn = [];
           let exmp = [];
-          let sansk = wordStored.sansktrit;
+          let sansk = wordStored.sanskrit;
           let translit = wordStored.transliteration;
   
           def.push(wordStored.definitions);
@@ -34,10 +33,9 @@ export default class WordsPage extends React.Component {
           syn = wordObjSlicer(syn[0]);
           exmp = wordObjSlicer(exmp[0]);
   
-          if(sansk === null){
-            console.log('LOTR');
+          if(sansk === undefined){
             return (
-              <React.Fragment>
+              <React.Fragment key={idx}>
                 <div className='definitionsBox'>
                   <ul className='categoryStyle'>
                     <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
@@ -51,9 +49,8 @@ export default class WordsPage extends React.Component {
               </React.Fragment>
             );
           } else {
-            console.log('Bhaga');
             return (
-              <React.Fragment>
+              <React.Fragment key={idx}>
                 <div className='definitionsBox'>
                   <ul className='categoryStyle'>
                     <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>

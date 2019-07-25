@@ -7,8 +7,8 @@ export default function quotes(quote, sanskrit, translit) {
     <React.Fragment>
       <div className="quote-item">
         <p>{spanner(quote)}</p>
-        <p className='hide'>{sanskrit}</p>
-        <p className='hide'>{translit}</p>
+        <p className='hide sansk'>{sanskrit}</p>
+        <p className='hide translit'>{translit}</p>
       </div>
       
     </React.Fragment>

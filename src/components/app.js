@@ -110,8 +110,7 @@ export default class App extends React.Component {
     const regex = /\W+/;
 
     wordChosen = wordChosen.toLowerCase().replace(regex, '');
-
-    
+        
     if (wordChosen !== this.state.wordChosen) {
       theWord = await superagent
         .get(`${this.state.BACKEND_URL}/words`)
@@ -133,10 +132,8 @@ export default class App extends React.Component {
         }
       } else if (world === this.state.worldName[1]) {
         if(theWord.body !== null){
-          let sanskritGet = getLocalStorage('sanskrit');
-          let translitGet = getLocalStorage('transliteration');
-          console.log('sans from local:', sanskritGet);
-          console.log('trans from local:', translitGet);
+          let sanskrit = target.querySelector('div p.sansk').innerText;
+          let translit = target.querySelector('div p.translit').innerText;
           this.setState({
             wordChosen: wordChosen,
             currentQuote: target,
@@ -147,8 +144,8 @@ export default class App extends React.Component {
               definitions: theWord.body[1],
               synonyms: theWord.body[2],
               examples: theWord.body[0],
-              sanskrit: sanskritGet,
-              transliteration: translitGet,
+              sanskrit: sanskrit,
+              transliteration: translit,
             }
           });
         }
