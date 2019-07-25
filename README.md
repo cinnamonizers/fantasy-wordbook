@@ -122,12 +122,34 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Single paging the data - showing only what user requests to see
 
 ## Components and Functions List
-
+### Components
+* Index
+* App
+#### Header
+* Header
+#### Main
+* Main
+* Main Builder
+* About Us
+* Words
+### Functions
+#### Header
+* Nav
+#### Main
+* About Us Builder
+* Definitions Builder
+* Definitions
+* Dropdown
+* Local Storage
+* Quotes
+* Random Number Generator
+* Spanner
+* Word Object Slicer
 
 ## Change Log
 
 ### Day 1
-
+* Scaffolded the front-end
 
 ### Day 2
 
