@@ -20,14 +20,14 @@ export default class AboutUs extends React.Component {
           <img className='team-photo' src={require('../../../assets/cinnamonizers-team.jpg')} alt='Cinnamonizer Team' />
         </div>
         {aboutUsBuilder(
-          this.state.names[0],
-          this.state.padma[0],
-          this.state.padma[1]
-        )}
-        {aboutUsBuilder(
           this.state.names[1],
           this.state.manish[0],
           this.state.manish[1]
+        )}
+        {aboutUsBuilder(
+          this.state.names[0],
+          this.state.padma[0],
+          this.state.padma[1]
         )}
         {aboutUsBuilder(
           this.state.names[2],
