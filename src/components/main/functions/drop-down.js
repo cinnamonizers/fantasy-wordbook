@@ -1,13 +1,11 @@
 import React from 'react';
 
-export default function DropDown(item) {
-  let list = [];
-  item.forEach((val, idx) =>
-    list.push(
-      <option key={idx} value={val}>
-        {val}
-      </option>
-    )
-  );
-  return list;
+export default function dropDown(item) {
+  return (
+    <React.Fragment>
+      {item.map((val, idx) => {
+        return <option key={idx} value={val}>{val}</option>
+      })}
+    </React.Fragment>
+  )
 }

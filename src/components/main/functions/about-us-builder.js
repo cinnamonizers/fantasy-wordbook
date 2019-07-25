@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function AboutUsBuilder(name, gitHub, linkedIn) {
+export default function aboutUsBuilder(name, gitHub, linkedIn) {
   return (
     <div>
       <h2>{name}</h2>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { getLocalStorage } from '../functions/localstorage.js';
 import wordObjSlicer from '../functions/word-obj-slicer.js';
-import ListBuilder from '../functions/definitions-builder.js';
+import listBuilder from '../functions/definitions-builder.js';
 
 export default class WordsPage extends React.Component {
   constructor(props){
@@ -28,13 +28,13 @@ export default class WordsPage extends React.Component {
 
         return (
           <div className='definitionBox' key={idx}>
-          <li>Word Chosen: {wordStored.word}</li>
-          <li>******************</li>
-          <li>Quote: "{wordStored.quote}"</li>
-          {ListBuilder('Definitions:', def)}
-          {ListBuilder('Synonyms:', syn)}
-          {ListBuilder('Examples:', exmp)}
-        </div>
+            <li>Word Chosen: {wordStored.word}</li>
+            <li>******************</li>
+            <li>Quote: "{wordStored.quote}"</li>
+            {listBuilder('Definitions:', def)}
+            {listBuilder('Synonyms:', syn)}
+            {listBuilder('Examples:', exmp)}
+          </div>
         )
       })
     ) 
