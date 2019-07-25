@@ -2,7 +2,7 @@
 
 **AUTHORS** Padmapriya Ganapathi, Manish KC, Renee Messick, Nicholas Paro
 
-**VERSION** 1.0.0
+**VERSION** 1.3.0
 
 ## About Fantasy Wordbook
 
@@ -18,9 +18,11 @@
   - The Lord of the Rings - https://the-one-api.herokuapp.com/
   - Words API - https://www.wordsapi.com/
 - Organizational:
-- GitHub - https://github.com/cinnamonizers/fantasy-wordbook
-- Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
-- codesandbox.io
+  - GitHub - https://github.com/cinnamonizers/fantasy-wordbook
+  - Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
+- IDE
+  - VSCode
+  - codesandbox.io
 
 ## About Us
 
@@ -122,33 +124,40 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - Single paging the data - showing only what user requests to see
 
 ## Components and Functions List
-
-#### Front End
-
-#### Back End
+### Components
+- Index
+- App
+#### Header
+- Header
+#### Main
+- Main
+- Main Builder
+- About Us
+- Words
+### Functions
+#### Header
+- Nav
+#### Main
+- About Us Builder
+- Definitions Builder
+- Definitions
+- Dropdown
+- Local Storage
+- Quotes
+- Random Number Generator
+- Spanner
+- Word Object Slicer
 
 ## Change Log
 
 ### Day 1
-
-#### Front End
-
-#### Back End
+- Scaffolded the front-end
 
 ### Day 2
 
-#### Front End
-
-#### Back End
 
 ### Day 3
 
-#### Front End
-
-#### Back End
 
 ### Day 4
 
-#### Front End
-
-#### Back End
