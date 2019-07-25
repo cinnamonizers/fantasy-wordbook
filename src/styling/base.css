@@ -1,4 +1,8 @@
 /* https://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/ */
+.hide {
+  display: none;
+}
+
 @media (max-width: 600px) {
   * {
     box-sizing: border-box;

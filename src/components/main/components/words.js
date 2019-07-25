@@ -12,6 +12,7 @@ export default class WordsPage extends React.Component {
 
   setter = () => {
     let wordsArr = getLocalStorage('wordObj');
+    console.log(wordsArr);
     if(wordsArr === null){
       return (
         <h1 className="defSynExStyle">Please select some words and come back later!</h1>
@@ -22,29 +23,52 @@ export default class WordsPage extends React.Component {
           let def = [];
           let syn = [];
           let exmp = [];
+          let sansk = wordStored.sansktrit;
+          let translit = wordStored.transliteration;
   
           def.push(wordStored.definitions);
           syn.push(wordStored.synonyms);
           exmp.push(wordStored.examples);
-  
+          
           def = wordObjSlicer(def[0]);
           syn = wordObjSlicer(syn[0]);
           exmp = wordObjSlicer(exmp[0]);
   
-          return (
-            <div className='wordBox' key={idx}>
-              <div key={idx}>
-                <ul>
-                  <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
-                  <li>******************</li>
-                  <li>Quote: "{wordStored.quote}"</li>
-                  {listBuilder('Definitions:', def)}
-                  {listBuilder('Synonyms:', syn)}
-                  {listBuilder('Examples:', exmp)}
-                </ul>
-              </div>
-            </div>
-          )
+          if(sansk === null){
+            console.log('LOTR');
+            return (
+              <React.Fragment>
+                <div className='definitionsBox'>
+                  <ul className='categoryStyle'>
+                    <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
+                    <li>******************</li>
+                    <li className='defSynExStyle'>Quote: "{wordStored.quote}"</li>
+                    {listBuilder('Definitions:', def)}
+                    {listBuilder('Synonyms:', syn)}
+                    {listBuilder('Examples:', exmp)}
+                  </ul>
+                </div>
+              </React.Fragment>
+            );
+          } else {
+            console.log('Bhaga');
+            return (
+              <React.Fragment>
+                <div className='definitionsBox'>
+                  <ul className='categoryStyle'>
+                    <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
+                    <li>******************</li>
+                    <li className='defSynExStyle'>Quote: "{wordStored.quote}"</li>
+                    <li className='defSynExStyle'>Sanskrit: "{sansk}"</li>
+                    <li className='defSynExStyle'>Transliteration: "{translit}"</li>
+                    {listBuilder('Definitions:', def)}
+                    {listBuilder('Synonyms:', syn)}
+                    {listBuilder('Examples:', exmp)}
+                  </ul>
+                </div>
+              </React.Fragment>
+            );
+          }
         })
       )
     } 
