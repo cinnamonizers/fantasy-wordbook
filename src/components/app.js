@@ -106,11 +106,11 @@ export default class App extends React.Component {
   quoteDisplay = objectList => {
     if (objectList.length !== 0) {
       let ranNum = randomInclusiveNumGen(0, objectList.length - 1);
-      if(randNumArr.includes(ranNum)){
+      if (randNumArr.includes(ranNum)) {
         ranNum = randomInclusiveNumGen(0, objectList.length - 1);
       };
       randNumArr.push(ranNum);
-      if(randNumArr.length === 5){
+      if (randNumArr.length === 5) {
         randNumArr = [];
       }
       let ranQuote = objectList[ranNum].movie_name;
@@ -159,7 +159,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header 
+            <Header
               homeV={this.homeView}
               wordV={this.wordView}
               aboutV={this.aboutView}
@@ -174,7 +174,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header 
+            <Header
               homeV={this.homeView}
               wordV={this.wordView}
               aboutV={this.aboutView}
@@ -199,7 +199,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header 
+            <Header
               homeV={this.homeView}
               wordV={this.wordView}
               aboutV={this.aboutView}
@@ -214,13 +214,13 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <header>
-            <Header 
+            <Header
               homeV={this.homeView}
               wordV={this.wordView}
               aboutV={this.aboutView}
             />
           </header>
-          <main className='container'>
+          <main >
             <AboutUs />
           </main>
         </React.Fragment>
