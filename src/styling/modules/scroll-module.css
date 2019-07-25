@@ -21,12 +21,3 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #690b61;
 }
-
-/* Nick did this - double check my work */
-.wordScrollBox {
-  border: 5px double rgba(0, 2, 3, 0.9);
-  overflow: scroll;
-  padding-left: 10%;
-  height: 600px;
-  width: 100%;
-}
