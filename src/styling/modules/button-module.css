@@ -2,8 +2,17 @@ button {
   border-radius: 99%;
   min-width: 25%;
   background-color: black;
-  color: rgb(243, 221, 221);
   padding: 10px;
   margin: 10px;
+  
+}
+
+.navButton {
+  border-radius: 99%;
+  min-width: 25%;
+  color: rgb(243, 221, 221);
+  text-decoration: none;
   font-size: 1em;
+  /* padding: 10px; */
+  margin: 10px;
 }

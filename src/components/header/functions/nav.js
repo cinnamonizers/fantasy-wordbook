@@ -4,16 +4,10 @@ import { Link } from 'react-router-dom';
 export default function nav(homeClicker, wordClicker, aboutClicker) {
   return (
     <React.Fragment>
-      <nav>
-        <Link to='/'>
-          <button onClick={homeClicker}>Home</button>
-        </Link>
-        <Link to='/words-searched'>
-          <button onClick={wordClicker}>Words Searched</button>
-        </Link>
-        <Link to='/about-us'>
-          <button onClick={aboutClicker}>About Us</button>
-        </Link>
+      <nav>        
+        <button onClick={homeClicker}><Link className="navButton" to='/'>Home</Link></button>
+        <button onClick={wordClicker}><Link className="navButton" to='/words-searched'>Words Searched</Link></button>
+        <button onClick={aboutClicker}><Link className="navButton" to='/about-us'>About Us</Link></button>        
       </nav>
     </React.Fragment>
   );
