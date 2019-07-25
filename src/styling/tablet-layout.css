@@ -21,7 +21,7 @@
     background-repeat: repeat-y;
   }
   .definitionsBox {
-    border: 5px double rgb(1, 29, 48);
+    border: 3px double rgba(28, 110, 164, 0.6);
     overflow: scroll;
     margin-bottom: 10px;
   }
@@ -60,5 +60,6 @@
   nav {
     display: flex;
     justify-content: space-between;
+    text-align: center;
   }
 }
