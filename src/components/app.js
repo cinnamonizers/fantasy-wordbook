@@ -184,7 +184,7 @@ export default class App extends React.Component {
             <Header />
             {Nav(this.homeView, this.wordView, this.aboutView)}
           </header>
-          <main className='container'>
+          <main >
             <h1>Welcome to the words!</h1>
             <WordsPage />
           </main>
@@ -197,7 +197,7 @@ export default class App extends React.Component {
             <Header />
             {Nav(this.homeView, this.wordView, this.aboutView)}
           </header>
-          <main className='container'>
+          <main >
             <AboutUs />
           </main>
         </React.Fragment>

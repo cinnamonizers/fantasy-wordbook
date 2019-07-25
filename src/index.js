@@ -11,6 +11,8 @@ import './styling/modules/dropdown-module.css';
 import './styling/modules/button-module.css';
 import './styling/modules/scroll-module.css';
 import './styling/modules/definition-styles-module.css'
+import './styling/modules/about-us-module.css'
+import './styling/modules/words-search.css'
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
