@@ -34,12 +34,14 @@ export default class WordsPage extends React.Component {
           return (
             <div className='wordBox'>
               <div key={idx}>
-                <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
-                <li>******************</li>
-                <li>Quote: "{wordStored.quote}"</li>
-                {listBuilder('Definitions:', def)}
-                {listBuilder('Synonyms:', syn)}
-                {listBuilder('Examples:', exmp)}
+                <ul>
+                  <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
+                  <li>******************</li>
+                  <li>Quote: "{wordStored.quote}"</li>
+                  {listBuilder('Definitions:', def)}
+                  {listBuilder('Synonyms:', syn)}
+                  {listBuilder('Examples:', exmp)}
+                </ul>
               </div>
             </div>
           )
@@ -50,11 +52,9 @@ export default class WordsPage extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <ul>
-          {this.setter()};
-        </ul>
-      </React.Fragment>
+      <div className='wordScrollBox'>        
+          {this.setter()}
+      </div>
     )
   }
 }
