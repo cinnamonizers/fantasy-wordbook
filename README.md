@@ -123,32 +123,17 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 ## Components and Functions List
 
-#### Front End
-
-#### Back End
 
 ## Change Log
 
 ### Day 1
 
-#### Front End
-
-#### Back End
 
 ### Day 2
 
-#### Front End
-
-#### Back End
 
 ### Day 3
 
-#### Front End
-
-#### Back End
 
 ### Day 4
 
-#### Front End
-
-#### Back End
