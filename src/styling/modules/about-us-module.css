@@ -1,5 +1,9 @@
 .team-photo {
   width: 40%;
+  padding: 1px;
+  border: 3px double rgb(87, 4, 66);
+  background-color: black;
+  border-radius: 5px;
 }
 
 .about-us {
@@ -19,5 +23,5 @@
 
 h2 {
   color: white;
-  font-size: 2vw;
+  font-size: 1rem;
 }
