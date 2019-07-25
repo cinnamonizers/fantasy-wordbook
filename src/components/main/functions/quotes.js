@@ -2,10 +2,15 @@ import React from 'react';
 
 import spanner from './spanner.js';
 
-export default function quotes(quote) {
+export default function quotes(quote, sanskrit, translit) {
   return (
     <React.Fragment>
-      <p className="quote-item">{spanner(quote)}</p>
+      <div className="quote-item">
+        <p>{spanner(quote)}</p>
+        <p className='hide sansk'>{sanskrit}</p>
+        <p className='hide translit'>{translit}</p>
+      </div>
+      
     </React.Fragment>
   );
 }
