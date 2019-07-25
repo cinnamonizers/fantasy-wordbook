@@ -27,7 +27,6 @@ export default class WordsPage extends React.Component {
         exmp = wordObjSlicer(exmp[0]);
 
         return (
-<<<<<<< HEAD
           <div className='wordBox'>
             <div key={idx}>
               <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
@@ -37,15 +36,6 @@ export default class WordsPage extends React.Component {
               {ListBuilder('Synonyms:', syn)}
               {ListBuilder('Examples:', exmp)}
             </div>
-=======
-          <div className='definitionBox' key={idx}>
-            <li>Word Chosen: {wordStored.word}</li>
-            <li>******************</li>
-            <li>Quote: "{wordStored.quote}"</li>
-            {listBuilder('Definitions:', def)}
-            {listBuilder('Synonyms:', syn)}
-            {listBuilder('Examples:', exmp)}
->>>>>>> cb8818442d897b2cb0b5429078d7634d1260639f
           </div>
         )
       })
