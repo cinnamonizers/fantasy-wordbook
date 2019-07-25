@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ListBuilder(title, arr) {
+export default function listBuilder(title, arr) {
   return (
     <React.Fragment>
       <li className="defSynExStyle">{title}</li>
