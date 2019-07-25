@@ -32,9 +32,9 @@ export default class WordsPage extends React.Component {
               <li className="defSynExStyle">Word Chosen: {wordStored.word}</li>
               <li>******************</li>
               <li>Quote: "{wordStored.quote}"</li>
-              {ListBuilder('Definitions:', def)}
-              {ListBuilder('Synonyms:', syn)}
-              {ListBuilder('Examples:', exmp)}
+              {listBuilder('Definitions:', def)}
+              {listBuilder('Synonyms:', syn)}
+              {listBuilder('Examples:', exmp)}
             </div>
           </div>
         )
