@@ -17,6 +17,7 @@
 - APIS:
   - The Lord of the Rings - https://the-one-api.herokuapp.com/
   - Words API - https://www.wordsapi.com/
+  - Bhagavad Gita - https://bhagavadgita.io/api/
 - Organizational:
   - GitHub - https://github.com/cinnamonizers/fantasy-wordbook
   - Trello - https://trello.com/b/T60Mx9ml/cinnamonizers
@@ -111,7 +112,6 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - 2 APIs used
 - Functioning and normalized database
 - A styled and clean user interface which allows for user input and data output.
-- Delete or Update a piece of information from the database
 - Have a home page with routing
 - Have an about us page
 
