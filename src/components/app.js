@@ -104,18 +104,20 @@ export default class App extends React.Component {
       theWord = await superagent
         .get(`${this.state.BACKEND_URL}/words`)
         .query({ data: wordChosen });
-      this.setState({
-        wordChosen: wordChosen,
-        currentQuote: target,
-        words: theWord.body,
-        wordObj: {
-          word: wordChosen,
-          quote: target.innerText,
-          definitions: theWord.body[1],
-          synonyms: theWord.body[2],
-          examples: theWord.body[0]
-        }
-      });
+      if(theWord.body !== null){
+        this.setState({
+          wordChosen: wordChosen,
+          currentQuote: target,
+          words: theWord.body,
+          wordObj: {
+            word: wordChosen,
+            quote: target.innerText,
+            definitions: theWord.body[1],
+            synonyms: theWord.body[2],
+            examples: theWord.body[0]
+          }
+        });
+      }
       wordObjLocalStorage.push(this.state.wordObj);
       setLocalStorage('wordObj', wordObjLocalStorage);
     }
