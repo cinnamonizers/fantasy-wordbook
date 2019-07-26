@@ -2,7 +2,7 @@
 
 **AUTHORS** Padmapriya Ganapathi, Manish KC, Renee Messick, Nicholas Paro
 
-**VERSION** 1.3.0
+**VERSION** 1.4.0
 
 ## About Fantasy Wordbook
 
@@ -49,12 +49,9 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 
 - LinkedIn Logo: https://brand.linkedin.com/downloads
 - GitHub Logo: https://github.com/logos
-
-https://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/
-
-https://css-tricks.com/styling-a-select-like-its-2019/
-
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+- Full Screen Layout: https://coderchronicles.org/2016/04/12/create-a-full-screen-layout-for-mobile-web-apps/
+- Styling a Select: https://css-tricks.com/styling-a-select-like-its-2019/
+- Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 ## User Stories
 
@@ -200,20 +197,32 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 ### Day 1
 
-- Scaffolded the front-end
-- Built out basic css grid structure using SMACCS guidelines
+- Scaffolded the front-end.
+- Built out basic css grid structure using SMACCS guidelines.
+- Built the basic JavaScript functionality for the major components and functions within the React structure.
+- Initialized the integration between the front-end and back-end for The Lord of the Rings API.
 
 ### Day 2
 
 - Mobile view complete
+- Fully integrated The Lord of the Ring API to accurately display the 5 randomly generated quotes, display the chosen word and quote pulled from for the definitions display.
+- Integrated the Words API and associated the definitions, synonyms, and examples with the user selected word and displayed the information within the definitions display.
+- Built the About Us route.
+- Added Routing for the Words Searched and About Us routes.
+- Reorganized the React file structure to reflect components and functions.
 
 ### Day 3
 
 - Rebuilt css with flexbox in SMACCS guidelines
 - Fully responsive views available for mobile, tablet, and desktop
+- Added error handling and null checks to verify application state management.
+- Refactored the code into further functionalized segments to modularize the code.
+- Added local storage setting and getting functions to allow previously searched words to be storred and viewed on the words route.
+- Built the Words Searched route.
+- Added random number generator validation to ensure the same quote/verse is not chosen twice in a single display.
+- Deploted the front-end to Heroku.
 
 ### Day 4
-
 - Styled and made responsive the Word Searched and About Me routes.
 - Integrated the Bhagavad Gita API/DB.
 - Added additional display for the Bhagavad Gita definitions display to include the Sanskrit and Transliteration to the quotes.
