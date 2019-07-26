@@ -102,7 +102,7 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
   - We will create a safe space where everyone is able to be heard, valued, and respected.
 
 - How and when will you escalate the conflict resolution?
-  - If we are unable to solve our through a vote we will escalete to a Conflict Resolution Circle. If a circle is called we will all:
+  - If we are unable to solve our conflict through a vote we will escalete to a Conflict Resolution Circle. If a circle is called we will all:
     - close our laptops.
     - use a "talking stick" to ensure all concerns are aired and expressed.
     - continue to follow all rules layed down previously to ensure ONLY appropriate and constructive comments are made.
