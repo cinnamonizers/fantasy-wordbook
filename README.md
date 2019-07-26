@@ -34,7 +34,7 @@ After viewing multiple quotes and choosing new words to learn you can go back an
 
 #### Padmapriya Ganapathi
 
-Originally from India, I have been a Pacific Northwest native for almost 13 years now. I have held suport and project management roles before and currently transitioning into a software developer role. When I am not working, I am usually spending some quality time with my family or volunteering in one of my kid's classes.
+Originally from India, I have been a Pacific Northwest native for almost 13 years now. I have held support and project management roles before and currently transitioning into a software developer role. When I am not working, I am usually spending some quality time with my family or volunteering in one of my kid's classes.
 
 #### Manish KC
 
