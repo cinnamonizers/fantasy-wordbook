@@ -91,7 +91,7 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 - How will you raise concerns to members who are not adiquately contributing?
 
   - We will address our concerns in our end-of-day standup. This will ensure all concerns are voiced without instructor involvement.
-  - Concerns will be raised in the beginning-of-dat standup if the same issue becomes necessary to express to the instructor team.
+  - Concerns will be raised in the beginning-of-day standup if the same issue becomes necessary to express to the instructor team.
   - We will start all conflict problems from a place of support and we will express our intentions with a whole message - this will help to reduce unnessecary friction if a conflict arises.
   - We will attempt to only use "I" statements when approaching a conflict.
 
