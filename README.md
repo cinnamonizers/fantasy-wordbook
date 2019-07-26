@@ -122,7 +122,7 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 - Additional APIs
   - Bhagavad Gita API: https://bhagavadgita.io/api/
 - Single paging the data - showing only what user requests to see
-- Words page with local storage persistence to allow users to see all of the prviously searched words, their definitions, their synonyms, examples, Sanskrit (if applicable), and transliteration (if applicable).
+- Words page with local storage persistence to allow users to see all of the previously searched words, their definitions, their synonyms, examples, Sanskrit (if applicable), and transliteration (if applicable).
 
 ### Future Updates
 - Additional APIs
