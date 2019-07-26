@@ -5,6 +5,11 @@
 **VERSION** 1.1.0
 
 ## About Fantasy Wordbook
+Our site gives you the path to learning new words. You are able to select from either The Lord of the Rings or Bhagavad Gita and view quotes/verses. As you view the quotes/verses you can click on any words you find unfamiliar (or want to know more about) and see the quote you pulled the word from, the translation (if applicable), the transliteration (if applicable), the definitions, synonyms, and examples of its uses.
+
+After viewing multiple quotes and choosing new words to learn you can go back and view your previously chosen words and see all the information associated with them! Please enjoy.
+
+## Live URL: http://www.fantasy-wordbook.com
 
 ## Resources Used
 
