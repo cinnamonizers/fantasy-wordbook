@@ -85,7 +85,7 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 - What will our group do when it encounters conflict?
 
   - As a group we will put any conflicting idea to a vote.
-    - One person will be randomly selected each dat (changes every day) to have a double vote. This will ensure all ties are broken.
+    - One person will be randomly selected each day (changes every day) to have a double vote. This will ensure all ties are broken.
     - If the vote is unable to solve the issue, we will move into a Conflict Resolution Circle.
 
 - How will you raise concerns to members who are not adiquately contributing?
