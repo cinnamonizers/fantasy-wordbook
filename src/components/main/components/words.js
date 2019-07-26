@@ -2,7 +2,7 @@ import React from 'react';
 
 import { getLocalStorage } from '../functions/localstorage.js';
 import wordObjSlicer from '../functions/word-obj-slicer.js';
-import listBuilder from '../functions/definitions-builder.js';
+import wordObjBuilder from '../functions/word-obj-builder.js';
 
 export default class WordsPage extends React.Component {
   constructor(props) {
@@ -19,9 +19,7 @@ export default class WordsPage extends React.Component {
     } else {
       return (
         wordsArr.map((wordStored, idx) => {
-          let def = [];
-          let syn = [];
-          let exmp = [];
+          let def = [], syn = [], exmp = [];
           let sansk = wordStored.sanskrit;
           let translit = wordStored.transliteration;
   
@@ -33,37 +31,33 @@ export default class WordsPage extends React.Component {
           syn = wordObjSlicer(syn[0]);
           exmp = wordObjSlicer(exmp[0]);
   
-          if(sansk === undefined){
+          if(sansk === null){
+            let classSet = 'defSynExStyle hide';
             return (
-              <React.Fragment key={idx}>
-                <div className='definitionsBox'>
-                  <ul className='categoryStyle'>
-                    <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
-                    <li>******************</li>
-                    <li className='defSynExStyle'>Quote: "{wordStored.quote}"</li>
-                    {listBuilder('Definitions:', def)}
-                    {listBuilder('Synonyms:', syn)}
-                    {listBuilder('Examples:', exmp)}
-                  </ul>
-                </div>
-              </React.Fragment>
+              wordObjBuilder(
+                wordStored.word,
+                wordStored.quote,
+                def,
+                syn,
+                exmp,
+                classSet,
+                idx
+              )
             );
           } else {
+            let classSet = 'defSynExStyle';
             return (
-              <React.Fragment key={idx}>
-                <div className='definitionsBox'>
-                  <ul className='categoryStyle'>
-                    <li className='defSynExStyle'>Word Chosen: {wordStored.word}</li>
-                    <li>******************</li>
-                    <li className='defSynExStyle'>Quote: "{wordStored.quote}"</li>
-                    <li className='defSynExStyle'>Sanskrit: "{sansk}"</li>
-                    <li className='defSynExStyle'>Transliteration: "{translit}"</li>
-                    {listBuilder('Definitions:', def)}
-                    {listBuilder('Synonyms:', syn)}
-                    {listBuilder('Examples:', exmp)}
-                  </ul>
-                </div>
-              </React.Fragment>
+              wordObjBuilder(
+                wordStored.word,
+                wordStored.quote,
+                def,
+                syn,
+                exmp,
+                classSet,
+                idx,
+                sansk,
+                translit
+              )
             );
           }
         })
