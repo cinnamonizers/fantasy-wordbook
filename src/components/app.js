@@ -23,8 +23,8 @@ export default class App extends React.Component {
       view: 'landing',
       worldName: ['The Lord of the Rings', 'Bhagavad Gita'],
       worldChosen: null,
-      movieNames: null,
-      movieQuote: [],
+      worldNames: null,
+      worldQuote: [],
       currentQuote: null,
       dropDownValue: null,
       wordChosen: null,
@@ -41,7 +41,7 @@ export default class App extends React.Component {
     }
   }
 
-  movieTitlesSet = async e => {
+  worldTitlesSet = async e => {
     e.preventDefault();
     let world = e.target.value;
 
@@ -55,7 +55,7 @@ export default class App extends React.Component {
       movieArr[1] = temp;
       movieArr.unshift('Choose a movie to get quotes from');
       this.setState({ 
-        movieNames: movieArr,
+        worldNames: movieArr,
         worldChosen: world
       });
     } else if (world === this.state.worldName[1]) {
@@ -66,7 +66,7 @@ export default class App extends React.Component {
       chapterArr = chapterArr.map(chapter => chapter.replace(/"/g, ''));
       chapterArr.unshift('Choose a chapter to get verses from');
       this.setState({
-        movieNames: chapterArr,
+        worldNames: chapterArr,
         worldChosen: world
       });
     }
@@ -86,7 +86,7 @@ export default class App extends React.Component {
           .query({ data: movieChosen });
         this.setState({
           dropDownValue: movieChosen,
-          movieQuote: theOne.body
+          worldQuote: theOne.body
         });
       }
     } else if (world === this.state.worldName[1]) {
@@ -94,7 +94,7 @@ export default class App extends React.Component {
         const theChapter = await superagent.get(`${this.state.BACKEND_URL}/verses`).query({ data: movieChosen });
         this.setState({
           dropDownValue: movieChosen,
-          movieQuote: theChapter.body
+          worldQuote: theChapter.body
         });
       }
     }
@@ -103,6 +103,8 @@ export default class App extends React.Component {
 
   definitionSet = async e => {
     e.preventDefault();
+    let sanskrit = null;
+    let translit = null;
     let world = this.state.worldChosen;
     let theWord;
     let target = e.currentTarget;
@@ -115,40 +117,25 @@ export default class App extends React.Component {
       theWord = await superagent
         .get(`${this.state.BACKEND_URL}/words`)
         .query({ data: wordChosen });
-      if (world === this.state.worldName[0]) {
-        if(theWord.body !== null){
-          this.setState({
-            wordChosen: wordChosen,
-            currentQuote: target,
-            words: theWord.body,
-            wordObj: {
-              word: wordChosen,
-              quote: target.innerText,
-              definitions: theWord.body[1],
-              synonyms: theWord.body[2],
-              examples: theWord.body[0]
-            }
-          });
-        }
-      } else if (world === this.state.worldName[1]) {
-        if(theWord.body !== null){
-          let sanskrit = target.querySelector('div p.sansk').innerText;
-          let translit = target.querySelector('div p.translit').innerText;
-          this.setState({
-            wordChosen: wordChosen,
-            currentQuote: target,
-            words: theWord.body,
-            wordObj: {
-              word: wordChosen,
-              quote: target.innerText,
-              definitions: theWord.body[1],
-              synonyms: theWord.body[2],
-              examples: theWord.body[0],
-              sanskrit: sanskrit,
-              transliteration: translit,
-            }
-          });
-        }
+      if (world === this.state.worldName[1]) {
+        sanskrit = target.querySelector('div p.sansk').innerText;
+        translit = target.querySelector('div p.translit').innerText;
+      }
+      if (theWord.body !== null) {
+        this.setState({
+          wordChosen: wordChosen,
+          currentQuote: target,
+          words: theWord.body,
+          wordObj: {
+            word: wordChosen,
+            quote: target.innerText,
+            definitions: theWord.body[1],
+            synonyms: theWord.body[2],
+            examples: theWord.body[0],
+            sanskrit: sanskrit,
+            transliteration: translit,
+          }
+        });
       }
       wordObjLocalStorage.push(this.state.wordObj);
       setLocalStorage('wordObj', wordObjLocalStorage);
@@ -159,7 +146,7 @@ export default class App extends React.Component {
     let world = this.state.worldChosen;
     if (objectList.length !== 0) {
       
-      if(world === this.state.worldName[0]) {
+      if (world === this.state.worldName[0]) {
         let ranNum = randomInclusiveNumGen(0, objectList.length - 1);
         if (randNumArr.includes(ranNum)) {
           ranNum = randomInclusiveNumGen(0, objectList.length - 1);
@@ -178,7 +165,7 @@ export default class App extends React.Component {
         }
       } else if (world === this.state.worldName[1]) {
         let arr = [];
-        let chosenChapter = this.state.movieNames.indexOf(this.state.dropDownValue);
+        let chosenChapter = this.state.worldNames.indexOf(this.state.dropDownValue);
         objectList.forEach(chapter => {
           if(chapter.chapter_number === chosenChapter){
             arr.push(chapter);
@@ -227,20 +214,12 @@ export default class App extends React.Component {
       <React.Fragment>
         <header>
           {this.headerSet()}
-          <select className='movieDropdown' onChange={this.movieTitlesSet}>
+          <select className='movieDropdown' onChange={this.worldTitlesSet}>
             <option default='selected'>Choose a Universe to Explore</option>
             {dropDown(this.state.worldName)}
           </select>
         </header>
       </React.Fragment>
-    )
-  }
-
-  wordsLanding = () => {
-    let world = this.state.worldChosen;
-    console.log(world);
-    return (
-      <WordsPage world={world} />
     )
   }
 
@@ -257,7 +236,7 @@ export default class App extends React.Component {
           <header>
             {this.headerSet()}
             <select className='movieDropdown' onChange={this.quoteSet}>
-              {dropDown(this.state.movieNames)}
+              {dropDown(this.state.worldNames)}
             </select>
           </header>
         </React.Fragment>
@@ -268,14 +247,14 @@ export default class App extends React.Component {
           <header>
             {this.headerSet()}
             <select className='movieDropdown' onChange={this.quoteSet}>
-              {dropDown(this.state.movieNames)}
+              {dropDown(this.state.worldNames)}
             </select>
           </header>
           <main className='container'>
             <MainBuilder
               definition={this.definitionSet}
               display={this.quoteDisplay}
-              quote={this.state.movieQuote}
+              quote={this.state.worldQuote}
             />
             {this.state.worldChosen !== null && this.state.currentQuote !== null && (
               definitions(this.state.wordChosen, this.state.currentQuote, this.state.words)
@@ -290,7 +269,7 @@ export default class App extends React.Component {
             {this.headerSet()}
           </header>
           <main className='container'>
-            <Route path='/words-searched' component={WordsPage} />
+            <Route exact path='/words-searched' component={WordsPage} />
           </main>
         </React.Fragment>
       )
@@ -301,7 +280,7 @@ export default class App extends React.Component {
             {this.headerSet()}
           </header>
           <main>
-            <Route path='/about-us' component={AboutUs} />
+            <Route exact path='/about-us' component={AboutUs} />
           </main>
         </React.Fragment>
       );

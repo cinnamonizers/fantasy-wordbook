@@ -128,35 +128,51 @@ I was born and raised in Vermont, received a Bachelor of Fine Arts in Music Theo
 
 - Index
 - App
+  - worldTitlesSet() : pulls the name of The Lord of the Rings movies or chapter names from the Bhagavad Gita from the API or DB and sets the values to state.
+  - quoteSet() : pulls The Lord of the Rings quotes or Bhagavad Gita verses from the API or DB and sets the values to state.
+  - definitionSet() : builds the word objects which contains all the information presented to the user - word chosen, quote pulled from, definitions, synonyms, examples, sanskrit, and transliteration.
+  - quoteDisplay() : selects five random quotes from The Lord of the Rings API/DB or the Bhagavad Gita API/DB and calls the quotes() to apply the spanning function.
+  - homeView(), wordView(), and aboutView() : sets the state of the view to allow the page to display the correct components.
+  - headerSet() : returns the Header component with passed props for the nav bar.
+  - landingPage() : sets the display view to render the correct components and display only the necessary information. This function calls multiple other components and is the main rendering function for the page.
+  - render() : calls the landingPage().
 
 #### Header
 
 - Header
+  - render() : builds the title and calls the nav() to build the nav bar.
 
 #### Main
 
-- Main
 - Main Builder
+  - quoteDisplay() : builds and displays the quote boxes.
+  - render() : calls quoteDisplay().
 - About Us
+  - render() : pulls from state and sends team members' names, GitHub, and LinkedIn urls to the aboutUsBuilder().
 - Words
+  - setter() : pulls the word objects from local storage, pulls out the stored information, and calls the wordObjBuilder() to create the word sections for the words-searched route.
+  - render() : calls the setter().
 
 ### Functions
 
 #### Header
 
-- Nav
+- nav() : builds the nav bar, assigns the click event, and sets the links for the routes.
 
 #### Main
 
-- About Us Builder
-- Definitions Builder
-- Definitions
-- Dropdown
+- aboutUsBuilder() : pulls the information from the about us render() and creates the HTML objects to display on the about us route.
+- listBuilder() : builds the list elements for the definitions, synoynms, and examples.
+- definitions() : takes in the chosen word, current quote, and items for the definition and pulls their values to be display them to the user. Calss the worObjSlicer() to pull the definition items out of an array and then calls the wordObjBuilder() to build the word objects.
+- dropDown() : takes in the dropdown menu item and builds the options for the dropdown menus.
 - Local Storage
-- Quotes
-- Random Number Generator
-- Spanner
-- Word Object Slicer
+  - setLocalStorage() : takes in a key and value to set an item to the local storage.
+  - getLocalStorage() : pulls the item from local storage and parses it out of a stringified JSON item.
+- quotes() : takes in the quote, sanskrit, and transliteration which the word was chosen from. Runs the quote through the spanner() and assigns the values to HTML p tags. If the sanskrit or transliteration is not needed, it will hide the values.
+- randomInclusiveNumGen() : takes in the min and max range and produces a randomly generated number within that range.
+- spanner() : takes in a quote and puts an HTML span around each word within the quote. This allows for each word to be clicked on.
+- wordObjBuilder() : taskes in the word, quote, definition, synonyms, examples, necessary classes, index number, sanskrit, and transliteration and assigns them to the correct HTML list item. This allows for a modularized code without repeating function builds.
+- wordObjSlicer() : takes in an array of words for the definitions, synonyms, and examples and pulls out the first five to display to the user. This elminates a long list of synoynms and examples from being displayed.
 
 ### CSS
 
